@@ -1,7 +1,7 @@
-option optimize_for = LITE_RUNTIME;
-message MsgName
+package GAME2017;  
+message C2S_Login
 {
-	required int type = 1;  // 0 ×¢²á  1 µÇÂ¼
+	required int32 type = 1;  // 0 æ³¨å†Œ  1 ç™»å½•
 	required string username = 2;
 	required string password = 3;
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneLogin : MonoBehaviour {
 
@@ -13,4 +14,20 @@ public class SceneLogin : MonoBehaviour {
 	void Update () {
 		
 	}
+
+
+	public void onSignInClick()
+	{
+		Debug.Log ("Sign in");
+		Text tip =  GameObject.Find ("TipLabel") .GetComponent<Text>();
+		tip.text = "Sign in";
+	}
+
+	public void onSignUpClick()
+	{
+		Debug.Log ("Sign up");
+		Text tip =  GameObject.Find ("TipLabel") .GetComponent<Text>();
+		tip.text = "Sign up";
+	}
+
 }

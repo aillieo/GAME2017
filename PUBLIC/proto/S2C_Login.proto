@@ -1,6 +1,6 @@
-option optimize_for = LITE_RUNTIME;
-message MsgName
+package GAME2017;  
+message S2C_Login
 {
-	required int ret = 1;  // 0 1 2 бн
+	required int32 ret = 1;  // 0 1 2
 	required string uid = 2;
 }
