@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: C2S_Login.proto
-namespace GAME2017
+namespace ProtoBuf
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"C2S_Login")]
   public partial class C2S_Login : global::ProtoBuf.IExtensible

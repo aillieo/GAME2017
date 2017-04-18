@@ -14,8 +14,8 @@ public class SocketClient{
 
 		public bool ConnectServer()
 		{
-			IPAddress ip = IPAddress.Parse(CSSocket.Config.server);
-			int port = CSSocket.Config.port;
+            IPAddress ip = IPAddress.Parse(Config.Server.server);
+            int port = Config.Server.port;
 			_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			try
 			{
@@ -40,7 +40,7 @@ public class SocketClient{
 		void ReceiveMsg()
 		{
 			byte[] lenBytes = new byte[4];
-			byte[] recvBytes = new byte[CSSocket.Config.buffer_max_length];
+			byte[] recvBytes = new byte[Config.Server.buffer_max_length];
 			int bytes;
 			while (true)
 			{

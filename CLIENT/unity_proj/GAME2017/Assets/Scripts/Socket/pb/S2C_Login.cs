@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 // Generated from: S2C_Login.proto
-namespace GAME2017
+namespace ProtoBuf
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2C_Login")]
   public partial class S2C_Login : global::ProtoBuf.IExtensible

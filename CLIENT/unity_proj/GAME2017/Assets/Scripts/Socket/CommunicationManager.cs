@@ -6,6 +6,16 @@ namespace CSSocket{
 
 	public class CommunicationManager{
 
+        
+        bool _isConnected = false;
+
+        
+        public bool isConnected()
+        {
+            return _isConnected;
+        }
+
+
 		private CommunicationManager() {
 
 			Init ();
@@ -18,44 +28,57 @@ namespace CSSocket{
 
 		public bool Init()
 		{
-
 			_socketClient = new SocketClient();
-			bool ret = _socketClient.ConnectServer();
-			return ret;
+            _isConnected = _socketClient.ConnectServer();
+            return _isConnected;
 		}
 
-		public bool SendMessage(int type, string str )
-		{
-			Message msg = new Message();
-			msg.Type = 0;
-			msg.Content = str;
 
+        public bool SendMessage(int type,global::ProtoBuf.IExtensible msg)
+        {
+            if (!_isConnected)
+            {
+                return false;
+            }
 
-			byte[] bMsg;
-			int len = msg.serializeToBytes(out bMsg);
-			byte[] bLen = BitConverter.GetBytes(len);
-			byte[] bSend = new byte[bMsg.Length + 4];
-			Array.Copy(bLen, 0, bSend, 0, 4);
-			Array.Copy(bMsg, 0, bSend, 4, len);
-			_socketClient.Send(bSend);
+            System.IO.MemoryStream stream = new System.IO.MemoryStream ();
+            ProtoBuf.Serializer.Serialize(stream , msg);
+            byte[] bMsg = stream.ToArray();
 
-			return true;
-		}
+            int len = 4 + bMsg.Length;
+            byte[] bLen = BitConverter.GetBytes(len);
+            byte[] bType = BitConverter.GetBytes(type);
 
+            byte[] bSend = new byte[4 + len];
+            Array.Copy(bLen, 0, bSend, 0, 4);
+            Array.Copy(bType, 0, bSend, 4, 4);
+            Array.Copy(bMsg, 0, bSend, 8, len - 4);
+            _socketClient.Send(bSend);
+
+            return true;
+        }
 
 		public void Receive(byte[] data, int len)
 		{
-			Message msg = new Message();
-			msg.ParseFromBytes(data, len);
-			HandleMessage(msg );
+            int type = 0;
+            type = BitConverter.ToInt32(data, 0);
+            byte[] bRecv = new byte[len - 4];
+            Array.Copy(data,4,bRecv,0,len - 4);
+            System.IO.MemoryStream stream = new System.IO.MemoryStream(bRecv);
+            HandleMessage(type,stream);
+
 		}
 
-		private void HandleMessage(CSSocket.Message msg)
+        private void HandleMessage(int type, System.IO.MemoryStream stream)
 		{
-			if(msg.Type == 0)
-			{
-				// do something
-			}
+            switch (type)
+            {
+                case CSSocket.MessageTypes.S2C_Login:
+                    ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login>(stream);
+                    // do something
+                    break;
+            }
+
 
 		}
 

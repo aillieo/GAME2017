@@ -1,4 +1,4 @@
-package GAME2017;  
+package ProtoBuf;  
 message C2S_Login
 {
 	required int32 type = 1;  // 0 注册  1 登录

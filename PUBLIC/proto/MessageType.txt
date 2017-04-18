@@ -1,4 +1,4 @@
-S2C_Login = 1;
+S2C_Login = 1001;
 
 
 
@@ -9,4 +9,5 @@ S2C_Login = 1;
 
 // ！！！！
 
-S2C_Login = 1;
+S2C_Login = 2001;
+
