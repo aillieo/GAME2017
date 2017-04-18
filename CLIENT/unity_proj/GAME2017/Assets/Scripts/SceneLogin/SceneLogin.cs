@@ -25,9 +25,13 @@ public class SceneLogin : MonoBehaviour {
 
 	public void onSignUpClick()
 	{
-		Debug.Log ("Sign up");
-		Text tip =  GameObject.Find ("TipLabel") .GetComponent<Text>();
-		tip.text = "Sign up";
+		//Debug.Log ("Sign up");
+		//Text tip =  GameObject.Find ("TipLabel") .GetComponent<Text>();
+		//tip.text = "Sign up";
+
+		Text username = GameObject.Find ("InputUsername/Text").GetComponent<Text>();
+		CSSocket.CommunicationManager.instance.SendMessage (0,username.text);
+
 	}
 
 }
