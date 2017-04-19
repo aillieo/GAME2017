@@ -1,7 +1,0 @@
-package ProtoBuf;  
-message S2C_Login
-{
-	required int32 ret = 1;  // 0 1 2
-	required string uid = 2;
-	required string code = 3;
-}

@@ -6,15 +6,12 @@ public class MessageDispatcher :SingletonMonoBehaviour<MessageDispatcher>{
 
 	public delegate void MsgHandler(object data);
 
-	private Dictionary<int, MsgHandler> _handlerDic;
-	private Queue<KeyValuePair<int,object> > _msgQueue;
+    private Dictionary<int, MsgHandler> _handlerDic = new Dictionary<int, MsgHandler>();
+    private Queue<KeyValuePair<int, object>> _msgQueue = new Queue<KeyValuePair<int, object>>();
 
 	// Use this for initialization
 	void Start () {
 		
-		_handlerDic = new Dictionary<int, MsgHandler>();
-		_msgQueue = new Queue<KeyValuePair<int,object> >();
-	
 	}
 	
 	// Update is called once per frame
