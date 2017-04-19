@@ -59,7 +59,7 @@ public class SocketClient{
 				if (len > 0)
 				{
 					bytes = _socket.Receive(recvBytes, len , 0);
-					CommunicationManager.instance.Receive(recvBytes, len);
+					CommunicationManager.Instance.Receive(recvBytes, len);
 
 				}
 				if (bytes < 0)

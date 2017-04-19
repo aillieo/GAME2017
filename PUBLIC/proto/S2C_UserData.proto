@@ -1,0 +1,8 @@
+package ProtoBuf;  
+message S2C_UserData
+{
+	required string uid = 1;
+	required int32 lv = 2;
+	required int roleid = 3;
+	repeated int32 heroid = 4;
+}

@@ -4,25 +4,17 @@ using System;
 
 namespace CSSocket{
 
-	public class CommunicationManager{
+	public class CommunicationManager: Singleton<CommunicationManager>
+	{
 
         
         bool _isConnected = false;
 
         
-        public bool isConnected()
+        public bool IsConnected()
         {
             return _isConnected;
         }
-
-
-		private CommunicationManager() {
-
-			Init ();
-		}
-
-
-		public static readonly CommunicationManager instance = new CommunicationManager();
 
 		SocketClient _socketClient;
 
@@ -65,19 +57,21 @@ namespace CSSocket{
             byte[] bRecv = new byte[len - 4];
             Array.Copy(data,4,bRecv,0,len - 4);
             System.IO.MemoryStream stream = new System.IO.MemoryStream(bRecv);
-            HandleMessage(type,stream);
+            ParseMessage(type,stream);
 
 		}
 
-        private void HandleMessage(int type, System.IO.MemoryStream stream)
+		private void ParseMessage(int type, System.IO.MemoryStream stream)
 		{
-            switch (type)
-            {
-                case CSSocket.MessageTypes.S2C_Login:
-                    ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login>(stream);
-                    // do something
-                    break;
-            }
+			switch (type) {
+			case CSSocket.MessageTypes.S2C_Login:
+				{
+					ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login> (stream);
+					MessageDispatcher.Instance.AddMessage (type, msg);
+					break;
+				}
+
+			}
 
 
 		}

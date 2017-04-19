@@ -1,0 +1,6 @@
+package ProtoBuf;  
+message C2S_UserData
+{
+	required string uid = 1;
+	required string code = 2;
+}
