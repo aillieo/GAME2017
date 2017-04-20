@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using GNetwork;
 
-namespace CSSocket{
+namespace GNetwork{
 
 	public class CommunicationManager: Singleton<CommunicationManager>
 	{
@@ -64,7 +65,7 @@ namespace CSSocket{
 		private void ParseMessage(int type, System.IO.MemoryStream stream)
 		{
 			switch (type) {
-			case CSSocket.MessageTypes.S2C_Login:
+			case MessageTypes.S2C_Login:
 				{
 					ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login> (stream);
 					MessageDispatcher.Instance.AddMessage (type, msg);

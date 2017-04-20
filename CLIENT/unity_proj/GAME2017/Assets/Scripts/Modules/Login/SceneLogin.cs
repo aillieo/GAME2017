@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using ProtoBuf;
+using GNetwork;
+using UnityEngine.SceneManagement;
 
-namespace SceneLogin
+namespace GAME2017
 {
 
     public class SceneLogin : MonoBehaviour
@@ -24,7 +26,7 @@ namespace SceneLogin
             _username = GameObject.Find("InputUsername/Text").GetComponent<Text>();
             _password = GameObject.Find("InputPassword/Text").GetComponent<Text>();
 
-			MessageDispatcher.Instance.AddHandler (CSSocket.MessageTypes.S2C_Login,handleMessage);
+			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,handleMessage);
 
         }
 
@@ -38,10 +40,10 @@ namespace SceneLogin
         public void onSignInClick()
         {
 
-			bool connected = CSSocket.CommunicationManager.Instance.IsConnected();
+			bool connected = CommunicationManager.Instance.IsConnected();
 			if (!connected)
 			{
-				connected = CSSocket.CommunicationManager.Instance.Init ();
+				connected = CommunicationManager.Instance.Init ();
 			}
             if (!connected)
             {
@@ -55,17 +57,17 @@ namespace SceneLogin
             msg.username = _username.text;
             msg.password = _password.text;
             msg.type = 0;
-			CSSocket.CommunicationManager.Instance.SendMessage(CSSocket.MessageTypes.C2S_Login, msg);
+			CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
 
         }
 
         public void onSignUpClick()
         {
 
-			bool connected = CSSocket.CommunicationManager.Instance.IsConnected();
+			bool connected = CommunicationManager.Instance.IsConnected();
 			if (!connected)
 			{
-				connected = CSSocket.CommunicationManager.Instance.Init ();
+				connected = CommunicationManager.Instance.Init ();
 			}
 			if (!connected)
 			{
@@ -78,7 +80,7 @@ namespace SceneLogin
             msg.username = _username.text;
             msg.password = _password.text;
             msg.type = 1;
-            CSSocket.CommunicationManager.Instance.SendMessage(CSSocket.MessageTypes.C2S_Login, msg);
+            CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
 
         }
 
@@ -93,6 +95,8 @@ namespace SceneLogin
 			else 
 			{
 				_tip.text = "uid: " + _msg.uid;
+				GAME2017.UserData.Instance.Init (_msg.uid,_msg.code);
+				//SceneManager.LoadScene ("SceneDash");
 			}
 				
         }

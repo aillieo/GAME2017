@@ -4,9 +4,9 @@ using System.Net.Sockets;
 using System.Net;
 using System.Threading;
 
-namespace CSSocket{
+namespace GNetwork{
 
-public class SocketClient{
+	public class SocketClient{
 
 		public SocketClient(){}
 
@@ -14,8 +14,8 @@ public class SocketClient{
 
 		public bool ConnectServer()
 		{
-            IPAddress ip = IPAddress.Parse(Config.Server.server);
-            int port = Config.Server.port;
+			IPAddress ip = IPAddress.Parse(GConfig.Server.server);
+			int port = GConfig.Server.port;
 			_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			try
 			{
@@ -40,7 +40,7 @@ public class SocketClient{
 		void ReceiveMsg()
 		{
 			byte[] lenBytes = new byte[4];
-			byte[] recvBytes = new byte[Config.Server.buffer_max_length];
+			byte[] recvBytes = new byte[GConfig.Server.buffer_max_length];
 			int bytes;
 			while (true)
 			{
