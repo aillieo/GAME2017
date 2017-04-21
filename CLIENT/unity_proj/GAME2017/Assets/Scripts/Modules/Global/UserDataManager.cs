@@ -6,39 +6,54 @@ namespace GAME2017
 {
 	public class UserDataManager : Singleton<UserDataManager> {
 
-		UserData userData = new UserData ();
+		UserData _userData = new UserData ();
 
-		bool inited = false;
+		public UserData GetUserData()
+		{
+			return _userData;
+		}
+
+		bool _inited = false;
 
 		public bool IsInited()
 		{
-			return inited;
+			return _inited;
 		}
 
+		public bool IsNewUser { set ; get;}
 
 		public void Init(string _uid, string _code)
 		{
 			GNetwork.MessageDispatcher.Instance.AddHandler (GNetwork.MessageTypes.S2C_UserData,InitWithData);
-			userData.uid = _uid;
-			userData.code = _code;
+			_userData.uid = _uid;
+			_userData.code = _code;
 			Init ();
 		}
 
 		public void Init()
 		{
 			ProtoBuf.C2S_UserData msg = new ProtoBuf.C2S_UserData ();
-			msg.uid = userData.uid;
-			msg.code = userData.code;
+			msg.uid = _userData.uid;
+			msg.code = _userData.code;
 			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_UserData,msg);
 		}
 
 		public void InitWithData(object msg)
 		{
-			inited = true;
+			_inited = true;
 			ProtoBuf.S2C_UserData _msg = (ProtoBuf.S2C_UserData)msg;
-			 
-			userData.lv = _msg.lv;
-			// ...
+			IsNewUser = _msg.newUser;
+			if (IsNewUser) 
+			{
+				// ...
+				// Init role
+			} 
+			else 
+			{
+				//_userData.nickname
+				_userData.lv = _msg.lv;
+				// ...
+			}
 		}
 	}
 
