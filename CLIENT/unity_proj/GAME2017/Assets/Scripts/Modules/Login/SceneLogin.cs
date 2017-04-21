@@ -95,7 +95,7 @@ namespace GAME2017
 			else 
 			{
 				_tip.text = "uid: " + _msg.uid;
-				GAME2017.UserData.Instance.Init (_msg.uid,_msg.code);
+				GAME2017.UserDataManager.Instance.Init (_msg.uid,_msg.code);
 				//SceneManager.LoadScene ("SceneDash");
 			}
 				

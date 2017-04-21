@@ -11,7 +11,7 @@ namespace GAME2017
 		public int earth;
 	}
 
-	enum ElementType
+	public enum ElementType
 	{
 		air = 0,
 		water = 1,
@@ -19,9 +19,31 @@ namespace GAME2017
 		earth = 3
 	}
 
+	public class UserData
+	{
+		public string uid;
+		public string code;
+		public string username;
+		public string nickname;
+		public int lv;
+		public int gold;
+		public int gem;
+		public int experience;
+		public int roleId;
+		public int strength;
+		public int magic;
+		public int agility;
+		public ElementProperty eleProperty;
+		public ElementType eleType;
+		public int chest;
+		public ElementProperty keys;
+		public List<HeroData> heroes;
+	}
+
 	public class HeroData
 	{
 		public string id;
+		// ...
 	}
 
 }

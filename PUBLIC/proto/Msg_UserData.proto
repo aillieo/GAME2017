@@ -1,7 +1,6 @@
-import "Dat_HeroData.proto";
-import "Dat_General.proto";
+import "Dat_UserData.proto";
 
-package ProtoBuf;  
+package ProtoBuf;
 
 message C2S_UserData
 {
@@ -11,22 +10,6 @@ message C2S_UserData
 message S2C_UserData
 {
 	required bool newUser = 1; // 是否新用户
-	required string uid = 2; // 玩家UID
-	required int32 lv = 3; // 玩家等级
-	required int32 experience = 4; // 经验值
-	required int32 roleId = 5; // 玩家角色id
-
-	required int32 strength = 6; // 力量属性
-	required int32 magic = 7; // 魔法属性
-	required int32 agility = 8; // 敏捷度
-	required DAT_ElementProperty elementBonus = 9; // 玩家元素属性
-
-	repeated DAT_HeroData heroes = 10; // 玩家拥有的所有英雄
-
-	required int32 gold = 11; // 玩家有的金币
-	required int32 gem = 12; // 玩家有的钻石
-
-	required int32 chest = 13; // 玩家箱子数
-	required DAT_ElementProperty keys = 14; // 玩家的钥匙
+	required DAT_UserData userData = 2; //玩家的信息
 
 }
