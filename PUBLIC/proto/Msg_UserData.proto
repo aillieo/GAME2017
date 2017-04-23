@@ -9,7 +9,8 @@ message C2S_UserData
 }
 message S2C_UserData
 {
-	required bool newUser = 1; // 是否新用户
-	required DAT_UserData userData = 2; //玩家的信息
+	required int32 ret = 1;
+	required bool newUser = 2; // 是否新用户
+	required DAT_UserData userData = 3; //玩家的信息
 
 }
