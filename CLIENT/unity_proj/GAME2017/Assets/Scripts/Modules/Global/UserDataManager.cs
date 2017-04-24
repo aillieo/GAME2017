@@ -50,11 +50,13 @@ namespace GAME2017
 			} 
 			else 
 			{
-				//_userData.nickname
-				_userData.lv = _msg.lv;
-				// ...
+				_userData.SetData(_msg.userData);
 			}
 		}
+			
 	}
+
+
+
 
 }

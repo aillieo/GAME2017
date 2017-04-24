@@ -26,7 +26,7 @@ namespace GAME2017
             _username = GameObject.Find("InputUsername/Text").GetComponent<Text>();
             _password = GameObject.Find("InputPassword/Text").GetComponent<Text>();
 
-			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,handleMessage);
+			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,HandleMessage);
 
         }
 
@@ -37,7 +37,7 @@ namespace GAME2017
         }
 
 
-        public void onSignInClick()
+        public void OnSignInClick()
         {
 
 			bool connected = CommunicationManager.Instance.IsConnected();
@@ -61,7 +61,7 @@ namespace GAME2017
 
         }
 
-        public void onSignUpClick()
+        public void OnSignUpClick()
         {
 
 			bool connected = CommunicationManager.Instance.IsConnected();
@@ -85,7 +85,7 @@ namespace GAME2017
         }
 
 
-        public void handleMessage(object msg)
+        public void HandleMessage(object msg)
         {
 			S2C_Login _msg = msg as S2C_Login;
 			if (_msg.ret != 0) 
