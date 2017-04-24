@@ -12,5 +12,4 @@ message S2C_UserData
 	required int32 ret = 1;
 	required bool newUser = 2; // 是否新用户
 	required DAT_UserData userData = 3; //玩家的信息
-
 }

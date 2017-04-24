@@ -9,5 +9,4 @@ message DAT_HeroData
 	required int32 experience = 4;
 	repeated string heroUId = 5;
 	required DAT_ElementType elementType = 6;
-
 }

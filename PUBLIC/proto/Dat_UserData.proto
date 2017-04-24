@@ -21,6 +21,5 @@ message DAT_UserData
 	required int32 gold = 11; // 玩家有的金币
 	required int32 gem = 12; // 玩家有的钻石
 
-	required int32 chest = 13; // 玩家箱子数
-	required DAT_ElementProperty keys = 14; // 玩家的钥匙
+	required DAT_ElementProperty keys = 13; // 玩家的钥匙
 }
