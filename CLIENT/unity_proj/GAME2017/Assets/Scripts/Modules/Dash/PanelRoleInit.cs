@@ -10,7 +10,7 @@ namespace GAME2017
 	public class PanelRoleInit : MonoBehaviour {
 
 		int index = 0;
-		RoleDataList _roleDataList;
+		RoleDataList _roleDataList = new RoleDataList();
 		Toggle _toggle1, _toggle2, _toggle3 ;
 
 		// Use this for initialization
@@ -41,15 +41,14 @@ namespace GAME2017
 				index = 3;
 			}
 				
-			if (index != 0) {
-				Debug.Log ("ROLE INDEX " + index.ToString ());
+			if (index > 0) {
+				
+				Debug.Log ("ROLE INDEX " + _roleDataList.roleDataList[index - 1].RoleId);
+
+				ProtoBuf.C2S_RoleInit msg = new ProtoBuf.C2S_RoleInit ();
+				msg.roleID = _roleDataList.roleDataList[index - 1].RoleId;
+				GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_RoleInit , msg);
 			}
-
-
-			ProtoBuf.C2S_RoleInit msg = new ProtoBuf.C2S_RoleInit ();
-			msg.roleID = _roleDataList.roleDataList[index].RoleId;
-			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_RoleInit , msg);
-
 		}
 
 
@@ -64,13 +63,13 @@ namespace GAME2017
 			string filepath = Application.dataPath + "/JsonFiles/role.json";
 			if (!File.Exists(filepath))
 			{
-				//Debug.Log (filepath + "do not exist");
+				Debug.Log (filepath + "do not exist");
 				return;
 			}
 			StreamReader sr = new StreamReader(filepath);
 			if (sr == null)
 			{
-				//Debug.Log (filepath + "read failed");
+				Debug.Log (filepath + "read failed");
 				return;
 			}
 			string json = sr.ReadToEnd();
@@ -78,9 +77,9 @@ namespace GAME2017
 				_roleDataList = JsonUtility.FromJson<RoleDataList> (json);
 			} 
 			else {
-				//Debug.Log (filepath + "empty file");
+				Debug.Log (filepath + "empty file");
 			}
-			//Debug.Log (data.enemyDataList.Length.ToString());
+			//Debug.Log (_roleDataList.roleDataList.Length.ToString());
 		}
 
 	}

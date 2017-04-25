@@ -4,6 +4,7 @@ using System;
 
 namespace GAME2017
 {
+	[Serializable]
 	public class ElementProperty
 	{
 		public int air;
@@ -79,11 +80,7 @@ namespace GAME2017
 		public int Strength;
 		public int Magic;
 		public int Agility;
-		public int ElemProperty;
-		public int Air;
-		public int Water;
-		public int Fire;
-		public int Earth;
+		public ElementProperty ElemProperty;
 	}
 
 }
