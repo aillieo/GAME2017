@@ -5,37 +5,43 @@ using GAME2017;
 
 namespace GAME2017
 {
-	public class UIManager :SingletonMonoBehaviour<UIManager>{
+	public class UIManager : SingletonMonoBehaviour <UIManager>{
 
 
-		// Use this for initialization
-		void Start () {
+		Stack<GameObject> _panelStack = new Stack<GameObject>();
+		//GameObject _current ;
 
+		public void OpenPanel(GameObject panel)
+		{
+			panel.SetActive (true);
+
+			_panelStack.Push (panel);
 		}
 
-		// Update is called once per frame
-		void Update () {
-			
-
+		public void ClosePanel()
+		{
+			if (_panelStack.Count > 0) 
+			{
+				_panelStack.Pop ().SetActive (false);
+			}
 		}
 
-
-		public void showWaiting(float waitTime)
+		public void ShowWaiting(float waitTime)
 		{
 			
 		}
 
-		public void showAlert(string alertText)
+		public void ShowAlert(string alertText)
 		{
 			
 		}
 
-		public void showConfirm(string confirmText, System.Delegate confirmCallback)
+		public void ShowConfirm(string confirmText, System.Delegate confirmCallback)
 		{
 			
 		}
 
-		public void showTip(string tipText, float duration)
+		public void ShowTip(string tipText, float duration)
 		{
 			
 		}

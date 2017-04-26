@@ -5,12 +5,12 @@ using UnityEngine;
 public class PanelAutoClose : MonoBehaviour {
 
 
-	protected GameObject _panelRoot;
+	protected GameObject _panel;
 
 	// Use this for initialization
 	void Start () {
 
-		_panelRoot = this.gameObject;
+		_panel = this.gameObject;
 
 	}
 	
@@ -21,7 +21,7 @@ public class PanelAutoClose : MonoBehaviour {
 		{
 			//Vector2 pos =  Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			if (!UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject () ){
-				_panelRoot.SetActive (false);
+				GAME2017.UIManager.Instance.ClosePanel ();
 				//Debug.Log ("out");
 				// if pos locate outside the panel 
 				// set panel inactive

@@ -42,3 +42,5 @@
 /Users/aillieo/PROJECT/GAME2017/CLIENT/unity_proj/GAME2017/Temp/bin/Debug/Assembly-CSharp.dll
 /Users/aillieo/PROJECT/GAME2017/CLIENT/unity_proj/GAME2017/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
 /Users/aillieo/PROJECT/GAME2017/CLIENT/unity_proj/GAME2017/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
+/Users/aillieo/PRIVATE/GAME2017-client/CLIENT/unity_proj/GAME2017/Temp/bin/Debug/Assembly-CSharp-firstpass.dll
+/Users/aillieo/PRIVATE/GAME2017-client/CLIENT/unity_proj/GAME2017/Temp/bin/Debug/Assembly-CSharp-firstpass.dll.mdb
