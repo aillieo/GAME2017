@@ -40,7 +40,7 @@ namespace GNetwork{
 		void ReceiveMsg()
 		{
 			byte[] lenBytes = new byte[4];
-			byte[] recvBytes = new byte[GConfig.Server.buffer_max_length];
+			byte[] recvBytes = new byte[GConfig.Constant.buffer_max_length];
 			int bytes;
 			while (true)
 			{

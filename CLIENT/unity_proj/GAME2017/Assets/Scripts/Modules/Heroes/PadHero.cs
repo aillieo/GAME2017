@@ -4,10 +4,10 @@ using UnityEngine;
 
 namespace GAME2017
 {
-	public class PanelWaiting : MonoBehaviour {
+	public class PadHero : MonoBehaviour {
 
 
-		public GameObject loadingImage;
+		string _heroUID;
 
 		// Use this for initialization
 		void Start () {
@@ -17,8 +17,17 @@ namespace GAME2017
 		// Update is called once per frame
 		void Update () {
 
-			loadingImage.transform.Rotate (new Vector3(0,0,5f));
+		}
+
+		public void SetHeroData (GAME2017.HeroData data)
+		{
+
+		}
+
+		public void OnClick ()
+		{
 
 		}
 	}
+
 }

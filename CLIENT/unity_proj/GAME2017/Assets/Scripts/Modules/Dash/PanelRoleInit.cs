@@ -60,7 +60,7 @@ namespace GAME2017
 
 		void LoadData ()
 		{
-			string filepath = Application.dataPath + "/JsonFiles/role.json";
+			string filepath = Application.dataPath + "/Resources/JsonFiles/role.json";
 			if (!File.Exists(filepath))
 			{
 				Debug.Log (filepath + "do not exist");

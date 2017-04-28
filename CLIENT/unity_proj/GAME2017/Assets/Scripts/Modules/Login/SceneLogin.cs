@@ -14,9 +14,16 @@ namespace GAME2017
 
 
         Text _tip;
+
         Text _username;
         Text _password;
 
+
+		#if DEBUG_SERVER
+
+		#else
+		GameObject _debugNode;
+		#endif
 
         // Use this for initialization
         void Start()
@@ -25,6 +32,14 @@ namespace GAME2017
             _tip = GameObject.Find("TipLabel").GetComponent<Text>();
             _username = GameObject.Find("InputUsername/Text").GetComponent<Text>();
             _password = GameObject.Find("InputPassword/Text").GetComponent<Text>();
+
+			#if DEBUG_SERVER
+
+			#else
+			_debugNode = GameObject.Find ("DebugNode");
+			_debugNode.SetActive (false);
+			#endif
+
 
 			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,HandleMessage);
 
@@ -40,6 +55,15 @@ namespace GAME2017
         public void OnSignInClick()
         {
 
+			#if USE_LOCAL_DATA
+
+
+			// load local data
+
+			SceneManager.LoadScene ("SceneDash");
+
+			#else
+
 			bool connected = CommunicationManager.Instance.IsConnected();
 			if (!connected)
 			{
@@ -47,7 +71,7 @@ namespace GAME2017
 			}
             if (!connected)
             {
-                _tip.text = "网络连接失败";
+				UIManager.Instance.ShowAlert ("网络连接失败");
                 return;
             }
 
@@ -59,10 +83,16 @@ namespace GAME2017
             msg.type = 0;
 			CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
 
+			#endif
         }
 
         public void OnSignUpClick()
         {
+			#if USE_LOCAL_DATA
+
+			// init local data
+
+			#else
 
 			bool connected = CommunicationManager.Instance.IsConnected();
 			if (!connected)
@@ -71,7 +101,8 @@ namespace GAME2017
 			}
 			if (!connected)
 			{
-				_tip.text = "网络连接失败";
+				UIManager.Instance.ShowAlert ("网络连接失败");
+				//_tip.text = "网络连接失败";
 				return;
 			}
 
@@ -81,6 +112,8 @@ namespace GAME2017
             msg.password = _password.text;
             msg.type = 1;
             CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
+
+			#endif
 
         }
 

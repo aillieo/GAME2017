@@ -4,10 +4,7 @@ using UnityEngine;
 
 namespace GAME2017
 {
-	public class PanelWaiting : MonoBehaviour {
-
-
-		public GameObject loadingImage;
+	public class PanelConfirm : MonoBehaviour {
 
 		// Use this for initialization
 		void Start () {
@@ -17,8 +14,7 @@ namespace GAME2017
 		// Update is called once per frame
 		void Update () {
 
-			loadingImage.transform.Rotate (new Vector3(0,0,5f));
-
 		}
 	}
+
 }
