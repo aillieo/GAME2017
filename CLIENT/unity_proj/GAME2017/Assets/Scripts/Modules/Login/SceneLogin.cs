@@ -21,6 +21,9 @@ namespace GAME2017
 
 		#if DEBUG_SERVER
 
+		Text _serverIP;
+		Text _serverPort;
+
 		#else
 		GameObject _debugNode;
 		#endif
@@ -34,6 +37,14 @@ namespace GAME2017
             _password = GameObject.Find("InputPassword/Text").GetComponent<Text>();
 
 			#if DEBUG_SERVER
+			_serverIP = GameObject.Find("DebugNode/InputServerIP/Text").GetComponent<Text>();
+			_serverPort = GameObject.Find("DebugNode/InputServerPort/Text").GetComponent<Text>();
+			_serverIP.text = GConfig.Server.server;
+			_serverPort.text = GConfig.Server.port.ToString();
+			Text _serverIPPlaceholder = GameObject.Find("DebugNode/InputServerIP/Placeholder").GetComponent<Text>();
+			Text _serverPortPlaceholder = GameObject.Find("DebugNode/InputServerPort/Placeholder").GetComponent<Text>();
+			_serverIPPlaceholder.text = GConfig.Server.server;
+			_serverPortPlaceholder.text = GConfig.Server.port.ToString();
 
 			#else
 			_debugNode = GameObject.Find ("DebugNode");
@@ -55,65 +66,14 @@ namespace GAME2017
         public void OnSignInClick()
         {
 
-			#if USE_LOCAL_DATA
+			Connect (0);
 
-
-			// load local data
-
-			SceneManager.LoadScene ("SceneDash");
-
-			#else
-
-			bool connected = CommunicationManager.Instance.IsConnected();
-			if (!connected)
-			{
-				connected = CommunicationManager.Instance.Init ();
-			}
-            if (!connected)
-            {
-				UIManager.Instance.ShowAlert ("网络连接失败");
-                return;
-            }
-
-            _tip.text = "正在连接";
-
-            ProtoBuf.C2S_Login msg = new ProtoBuf.C2S_Login();
-            msg.username = _username.text;
-            msg.password = _password.text;
-            msg.type = 0;
-			CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
-
-			#endif
         }
 
         public void OnSignUpClick()
         {
-			#if USE_LOCAL_DATA
 
-			// init local data
-
-			#else
-
-			bool connected = CommunicationManager.Instance.IsConnected();
-			if (!connected)
-			{
-				connected = CommunicationManager.Instance.Init ();
-			}
-			if (!connected)
-			{
-				UIManager.Instance.ShowAlert ("网络连接失败");
-				//_tip.text = "网络连接失败";
-				return;
-			}
-
-            _tip.text = "正在连接";
-            C2S_Login msg = new C2S_Login();
-            msg.username = _username.text;
-            msg.password = _password.text;
-            msg.type = 1;
-            CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
-
-			#endif
+			Connect (1);
 
         }
 
@@ -129,11 +89,58 @@ namespace GAME2017
 			{
 				_tip.text = "uid: " + _msg.uid;
 				GAME2017.UserDataManager.Instance.Init (_msg.uid,_msg.code);
-				//SceneManager.LoadScene ("SceneDash");
+				UIManager.Instance.HideWaiting ();
+				SceneManager.LoadScene ("SceneDash");
 			}
 				
         }
 
+		void Connect(int type)
+		{
+			bool connected = CommunicationManager.Instance.IsConnected();
+			if (!connected)
+			{
+				#if DEBUG_SERVER
+
+				string ip = GConfig.Server.server;
+				int port = GConfig.Server.port;
+
+				if(_serverIP.text.Length != 0)
+				{
+					ip = _serverIP.text;
+				}
+
+				if(_serverPort.text.Length != 0)
+				{
+					port = int.Parse(_serverPort.text);
+				}
+
+				connected = CommunicationManager.Instance.Init (ip,port);
+
+				#else
+				connected = CommunicationManager.Instance.Init ();
+
+				#endif
+
+			}
+
+			if (!connected)
+			{
+				UIManager.Instance.ShowAlert ("网络连接失败");
+				return;
+			}
+
+			_tip.text = "正在连接";
+
+			ProtoBuf.C2S_Login msg = new ProtoBuf.C2S_Login();
+			msg.username = _username.text;
+			msg.password = _password.text;
+			msg.type = type;
+			CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
+
+			UIManager.Instance.ShowWaiting ();
+
+		}
 
 
     }

@@ -45,12 +45,13 @@ namespace GAME2017
 		public int strength;
 		public int magic;
 		public int agility;
-		public ElementProperty eleProperty;
-		public ElementProperty keys;
+		public ElementProperty eleProperty = new ElementProperty();
+		public ElementProperty keys = new ElementProperty();
 		public List<HeroData> heroes;
 
 		public void SetData(ProtoBuf.DAT_UserData dat)
 		{
+			nickname = dat.nickname;
 			lv = dat.lv;
 			experience = dat.experience;
 			uid = dat.uid;
@@ -62,7 +63,7 @@ namespace GAME2017
 			agility = dat.agility;
 			eleProperty.SetData(dat.elementProperty);
 			keys.SetData(dat.keys);
-			//heroes = dat.heroes;
+			heroes = new List<HeroData> ();
 		}
 	}
 

@@ -13,24 +13,27 @@ namespace GAME2017
 			return _userData;
 		}
 
-		bool _inited = false;
+		bool _hasUserData = false;
 
-		public bool IsInited()
+		public bool HasUserData()
 		{
-			return _inited;
+			return _hasUserData;
 		}
 
 		public bool IsNewUser { set ; get;}
 
 		public void Init(string _uid, string _code)
 		{
-			GNetwork.MessageDispatcher.Instance.AddHandler (GNetwork.MessageTypes.S2C_UserData,InitWithData);
 			_userData.uid = _uid;
 			_userData.code = _code;
-			Init ();
 		}
 
-		public void Init()
+		public void InitHandler()
+		{
+			GNetwork.MessageDispatcher.Instance.AddHandler (GNetwork.MessageTypes.S2C_UserData,OnInitBack);
+		}
+
+		public void RequestUserData()
 		{
 			ProtoBuf.C2S_UserData msg = new ProtoBuf.C2S_UserData ();
 			msg.uid = _userData.uid;
@@ -38,9 +41,13 @@ namespace GAME2017
 			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_UserData,msg);
 		}
 
-		public void InitWithData(object msg)
+		public void InitWithData(ProtoBuf.DAT_UserData userData)
 		{
-			_inited = true;
+			_userData.SetData(userData);
+		}
+
+		public void OnInitBack(object msg)
+		{
 			ProtoBuf.S2C_UserData _msg = (ProtoBuf.S2C_UserData)msg;
 			IsNewUser = _msg.newUser;
 			if (IsNewUser) 
@@ -50,8 +57,9 @@ namespace GAME2017
 			} 
 			else 
 			{
-				_userData.SetData(_msg.userData);
+				InitWithData (_msg.userData);
 			}
+			_hasUserData = true;
 		}
 			
 	}

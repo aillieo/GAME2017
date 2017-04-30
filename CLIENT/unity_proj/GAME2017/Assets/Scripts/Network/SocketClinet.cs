@@ -12,14 +12,13 @@ namespace GNetwork{
 
 		private Socket _socket;
 
-		public bool ConnectServer()
+		public bool ConnectServer(string ip, int port)
 		{
-			IPAddress ip = IPAddress.Parse(GConfig.Server.server);
-			int port = GConfig.Server.port;
+			IPAddress _ip = IPAddress.Parse(ip);
 			_socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 			try
 			{
-				_socket.Connect(new IPEndPoint(ip, port));
+				_socket.Connect(new IPEndPoint(_ip, port));
 				//Console.WriteLine("connected");
 
 
@@ -48,7 +47,9 @@ namespace GNetwork{
 				bytes = _socket.Receive(lenBytes, 4, 0);
 				if(bytes > 0)
 				{
+					System.Array.Reverse (lenBytes);
 					len = System.BitConverter.ToInt32(lenBytes, 0);
+
 				}
 				if (bytes < 0)
 				{
@@ -72,6 +73,7 @@ namespace GNetwork{
 			}
 
 			_socket.Close();
+			CommunicationManager.Instance.IsConnected ();
 
 		}
 

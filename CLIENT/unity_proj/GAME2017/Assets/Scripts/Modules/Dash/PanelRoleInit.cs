@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System;
+using GNetwork;
 
 namespace GAME2017
 {
@@ -47,7 +48,8 @@ namespace GAME2017
 
 				ProtoBuf.C2S_RoleInit msg = new ProtoBuf.C2S_RoleInit ();
 				msg.roleID = _roleDataList.roleDataList[index - 1].RoleId;
-				GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_RoleInit , msg);
+				GNetwork.CommunicationManager.Instance.SendMessage (MessageTypes.C2S_RoleInit , msg);
+				UIManager.Instance.ShowWaiting ();
 			}
 		}
 
@@ -81,6 +83,8 @@ namespace GAME2017
 			}
 			//Debug.Log (_roleDataList.roleDataList.Length.ToString());
 		}
+			
+
 
 	}
 }

@@ -380,7 +380,7 @@ PlayerSettings:
   webGLUseWasm: 0
   webGLCompressionFormat: 1
   scriptingDefineSymbols:
-    1: DEBUG_SERVER;USE_LOCAL_DATA
+    1: DEBUG_SERVER
   platformArchitecture: {}
   scriptingBackend: {}
   incrementalIl2cppBuild: {}
