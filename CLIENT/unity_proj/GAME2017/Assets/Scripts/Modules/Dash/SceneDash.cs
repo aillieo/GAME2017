@@ -15,8 +15,10 @@ namespace GAME2017
 		void Start () {
 
 			_panelDashBase = GameObject.Find ("PanelDashBase");
+			_panelRoleInit = GameObject.Find ("PanelRoleInit");
 
 			_panelDashBase.SetActive (false);
+			_panelRoleInit.SetActive (false);
 
 			UserDataManager.Instance.InitHandler ();
 
@@ -39,14 +41,13 @@ namespace GAME2017
 
 			if (GAME2017.UserDataManager.Instance.IsNewUser) 
 			{
-				_panelRoleInit = GameObject.Find ("PanelRoleInit");
-				_panelRoleInit.SetActive(true);
+				UIManager.Instance.OpenPanel (_panelRoleInit);
 				GNetwork.MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_RoleInit, OnRoleInitBack);
 
 			}
 			else
 			{
-				// display user data
+				DestroyObject (_panelRoleInit.gameObject);
 				_panelDashBase.SetActive (true);
 				_panelDashBase.GetComponent<PanelDashBase> ().LoadUserData ();
 			}
