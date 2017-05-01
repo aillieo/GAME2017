@@ -4,9 +4,20 @@ package ProtoBuf;
 
 message DAT_HeroData
 {
-	required string uid = 2;
-	required int32 lv = 3;
-	required int32 experience = 4;
-	repeated string heroUId = 5;
-	required DAT_ElementType elementType = 6;
+	required string uid = 1; // 唯一id 用于数据库记录
+	required string id = 2; // 英雄id 用于客户端识别英雄资源
+	required int32 lv = 3;  // 等级
+	required int32 experience = 4;  // 经验
+	required DAT_ElementType elementType = 5;  // 元素类别
+	required int32 physicalAttack = 6; // 物理攻击
+	required int32 physicalDefence = 7; // 物理防御
+	required int32 magicalAttack = 8; // 魔法攻击
+	required int32 magicalDefence = 9; // 魔法防御
+	required int32 absoluteAttack = 10; // 绝对攻击 
+	required int32 speed = 11; // 行动速度
+	required int32 move = 12; // 移动格子数
+	required int32 attackRange = 13; //攻击范围
+	required int32 hp = 14; // 生命值
+	repeated string skills = 15; // 英雄的技能列表
+
 }
