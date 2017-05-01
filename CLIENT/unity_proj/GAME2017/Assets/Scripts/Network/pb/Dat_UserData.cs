@@ -44,9 +44,9 @@ namespace ProtoBuf
       get { return _experience; }
       set { _experience = value; }
     }
-    private int _roleId;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"roleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int roleId
+    private string _roleId;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"roleId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string roleId
     {
       get { return _roleId; }
       set { _roleId = value; }

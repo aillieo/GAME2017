@@ -4,20 +4,20 @@ package ProtoBuf;
 
 message DAT_HeroData
 {
-	required string uid = 1; // Î¨Ò»id ÓÃÓÚÊı¾İ¿â¼ÇÂ¼
-	required string id = 2; // Ó¢ĞÛid ÓÃÓÚ¿Í»§¶ËÊ¶±ğÓ¢ĞÛ×ÊÔ´
-	required int32 lv = 3;  // µÈ¼¶
-	required int32 experience = 4;  // ¾­Ñé
-	required DAT_ElementType elementType = 5;  // ÔªËØÀà±ğ
-	required int32 physicalAttack = 6; // ÎïÀí¹¥»÷
-	required int32 physicalDefence = 7; // ÎïÀí·ÀÓù
-	required int32 magicalAttack = 8; // Ä§·¨¹¥»÷
-	required int32 magicalDefence = 9; // Ä§·¨·ÀÓù
-	required int32 absoluteAttack = 10; // ¾ø¶Ô¹¥»÷ 
-	required int32 speed = 11; // ĞĞ¶¯ËÙ¶È
-	required int32 move = 12; // ÒÆ¶¯¸ñ×ÓÊı
-	required int32 attackRange = 13; //¹¥»÷·¶Î§
-	required int32 hp = 14; // ÉúÃüÖµ
-	repeated string skills = 15; // Ó¢ĞÛµÄ¼¼ÄÜÁĞ±í
+	required string uid = 1; // å”¯ä¸€id ç”¨äºæ•°æ®åº“è®°å½•
+	required string id = 2; // è‹±é›„id ç”¨äºå®¢æˆ·ç«¯è¯†åˆ«è‹±é›„èµ„æº
+	required int32 lv = 3;  // ç­‰çº§
+	required int32 experience = 4;  // ç»éªŒ
+	required DAT_ElementType elementType = 5;  // å…ƒç´ ç±»åˆ«
+	required int32 physicalAttack = 6; // ç‰©ç†æ”»å‡»
+	required int32 physicalDefence = 7; // ç‰©ç†é˜²å¾¡
+	required int32 magicalAttack = 8; // é­”æ³•æ”»å‡»
+	required int32 magicalDefence = 9; // é­”æ³•é˜²å¾¡
+	required int32 absoluteAttack = 10; // ç»å¯¹æ”»å‡» 
+	required int32 speed = 11; // è¡ŒåŠ¨é€Ÿåº¦
+	required int32 move = 12; // ç§»åŠ¨æ ¼å­æ•°
+	required int32 attackRange = 13; //æ”»å‡»èŒƒå›´
+	required int32 hp = 14; // ç”Ÿå‘½å€¼
+	repeated string skills = 15; // è‹±é›„çš„æŠ€èƒ½åˆ—è¡¨
 
 }

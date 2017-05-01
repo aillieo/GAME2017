@@ -41,7 +41,7 @@ namespace GAME2017
 		public int gold;
 		public int gem;
 		public int experience;
-		public int roleId;
+		public string roleId;
 		public int strength;
 		public int magic;
 		public int agility;
