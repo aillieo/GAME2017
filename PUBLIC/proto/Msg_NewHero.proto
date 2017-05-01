@@ -1,11 +1,10 @@
-import "Dat_General.proto";
 import "Dat_HeroData.proto";
 
 package ProtoBuf;  
 
 message C2S_NewHero
 {
-	required DAT_ElementType elementType = 1;
+	required int32 elementType = 1;
 }
 message S2C_NewHero
 {
