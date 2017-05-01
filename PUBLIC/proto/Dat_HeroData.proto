@@ -8,7 +8,7 @@ message DAT_HeroData
 	required string id = 2; // 英雄id 用于客户端识别英雄资源
 	required int32 lv = 3;  // 等级
 	required int32 experience = 4;  // 经验
-	required DAT_ElementType elementType = 5;  // 元素类别
+	required int32 elementType = 5;  // 元素类别 1=air 2=water 3=fire 4=earth
 	required int32 physicalAttack = 6; // 物理攻击
 	required int32 physicalDefence = 7; // 物理防御
 	required int32 magicalAttack = 8; // 魔法攻击

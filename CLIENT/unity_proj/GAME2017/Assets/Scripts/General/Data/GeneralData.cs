@@ -31,11 +31,12 @@ namespace GAME2017
 		earth = 3
 	}
 
+
 	public class UserData
 	{
 		public string uid;
 		public string code;
-		public string username;
+		//public string username;
 		public string nickname;
 		public int lv;
 		public int gold;
@@ -47,7 +48,7 @@ namespace GAME2017
 		public int agility;
 		public ElementProperty eleProperty = new ElementProperty();
 		public ElementProperty keys = new ElementProperty();
-		public List<HeroData> heroes;
+		public List<string> heroes;
 
 		public void SetData(ProtoBuf.DAT_UserData dat)
 		{
@@ -63,15 +64,45 @@ namespace GAME2017
 			agility = dat.agility;
 			eleProperty.SetData(dat.elementProperty);
 			keys.SetData(dat.keys);
-			heroes = new List<HeroData> ();
+			heroes = dat.heroes;
 		}
 	}
 
 	public class HeroData
 	{
+		public string id;
+		public string uid;
+		public int lv;
+		public int experience;
+		public int pAtk;
+		public int pDef;
+		public int mAtk;
+		public int mDef;
+		public int aAtk;
+		public int elemType;
+		public int speed;
+		public int move;
+		public int atkRange;
+		public int hp;
+		public List<string> skills;
+
 		public void SetData(ProtoBuf.DAT_HeroData dat)
 		{
-			
+			id = dat.id;
+			uid = dat.uid;
+			lv = dat.lv;
+			experience = dat.experience;
+			pAtk = dat.physicalAttack;
+			pDef = dat.physicalDefence;
+			mAtk = dat.magicalAttack;
+			mDef = dat.magicalDefence;
+			aAtk = dat.absoluteAttack;
+			//elemType = 
+			speed = dat.speed;
+			move = dat.move;
+			atkRange = dat.attackRange;
+			hp = dat.hp;
+			skills = dat.skills;
 		}
 	}
 
@@ -79,8 +110,17 @@ namespace GAME2017
 	[Serializable]
 	public class HeroDataStatic
 	{
-		public string id;
-		// ...
+		public string HeroId;
+		public int pAtk;
+		public int pDef;
+		public int mAtk;
+		public int mDef;
+		public int aAtk;
+		public int speed;
+		public int move;
+		public int atkRange;
+		public int hp;
+		public string[] skill;
 	}
 
 	[Serializable]

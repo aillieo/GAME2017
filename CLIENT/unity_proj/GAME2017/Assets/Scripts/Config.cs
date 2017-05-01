@@ -13,8 +13,8 @@ namespace GConfig
 
     class Server
     {
-        //public const string server = "127.0.0.1";
-		public const string server = "192.168.0.102";
+        public const string server = "127.0.0.1";
+		//public const string server = "192.168.0.102";
         public const int port = 8008;
     }
 }

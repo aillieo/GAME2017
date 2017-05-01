@@ -7,6 +7,7 @@ namespace GAME2017
 	public class UserDataManager : Singleton<UserDataManager> {
 
 		UserData _userData = new UserData ();
+		Dictionary<string,HeroData> _heroes = new Dictionary<string,HeroData>();
 
 		public UserData GetUserData()
 		{
@@ -34,7 +35,8 @@ namespace GAME2017
 			
 		public void AddNewHero(HeroData hd)
 		{
-			
+			_userData.heroes.Add (hd.uid);
+			_heroes [hd.uid] = hd;
 		}
 			
 	}

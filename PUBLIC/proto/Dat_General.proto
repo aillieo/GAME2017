@@ -7,13 +7,4 @@ message DAT_ElementProperty
 	required int32 fire = 3;
 	required int32 earth = 4;
 }
-message DAT_ElementType
-{
-	enum ele
-	{
-		Air = 0;
-		Water = 1;
-		Fire = 2;
-		Earth = 3;
-	}
-}
+
