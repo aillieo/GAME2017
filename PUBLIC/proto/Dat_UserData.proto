@@ -4,23 +4,23 @@ package ProtoBuf;
 
 message DAT_UserData
 {
-	required string uid = 1; // Íæ¼ÒUID
-	required string nickname = 2; // Íæ¼ÒêÇ³Æ
-	required int32 lv = 3; // Íæ¼ÒµÈ¼¶
-	required int32 experience = 4; // ¾­ÑéÖµ
-	required int32 roleId = 5; // Íæ¼Ò½ÇÉ«id
+	required string uid = 1; // ç©å®¶UID
+	required string nickname = 2; // ç©å®¶æ˜µç§°
+	required int32 lv = 3; // ç©å®¶ç­‰çº§
+	required int32 experience = 4; // ç»éªŒå€¼
+	required string roleId = 5; // ç©å®¶è§’è‰²id
 
-	required int32 strength = 6; // Á¦Á¿ÊôĞÔ
-	required int32 magic = 7; // Ä§·¨ÊôĞÔ
-	required int32 agility = 8; // Ãô½İ¶È
-	required DAT_ElementProperty elementProperty = 9; // Íæ¼ÒÔªËØÊôĞÔ
+	required int32 strength = 6; // åŠ›é‡å±æ€§
+	required int32 magic = 7; // é­”æ³•å±æ€§
+	required int32 agility = 8; // æ•æ·åº¦
+	required DAT_ElementProperty elementProperty = 9; // ç©å®¶å…ƒç´ å±æ€§
 
-	repeated string heroes = 10; // Íæ¼ÒÓµÓĞµÄËùÓĞÓ¢ĞÛ
+	repeated string heroes = 10; // ç©å®¶æ‹¥æœ‰çš„æ‰€æœ‰è‹±é›„
 
-	repeated string teams = 11; // Íæ¼ÒµÄ¶ÓÎé
+	repeated string teams = 11; // ç©å®¶çš„é˜Ÿä¼
 
-	required int32 gold = 12; // Íæ¼ÒÓĞµÄ½ğ±Ò
-	required int32 gem = 13; // Íæ¼ÒÓĞµÄ×êÊ¯
+	required int32 gold = 12; // ç©å®¶æœ‰çš„é‡‘å¸
+	required int32 gem = 13; // ç©å®¶æœ‰çš„é’»çŸ³
 
-	required DAT_ElementProperty keys = 14; // Íæ¼ÒµÄÔ¿³×
+	required DAT_ElementProperty keys = 14; // ç©å®¶çš„é’¥åŒ™
 }

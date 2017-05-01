@@ -9,6 +9,6 @@ message C2S_RoleInit
 message S2C_RoleInit
 {
 	required int32 ret = 1; // 
-	required DAT_UserData userData = 2; //³õÊ¼»¯ºóµÄĞÅÏ¢
+	required DAT_UserData userData = 2; //åˆå§‹åŒ–åçš„ä¿¡æ¯
 
 }

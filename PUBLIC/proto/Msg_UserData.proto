@@ -4,12 +4,12 @@ package ProtoBuf;
 
 message C2S_UserData
 {
-	required string uid = 1;  // ÓÃ»§uid
-	required string code = 2;  // ÓÃÀ´Ğ£ÑéµÄÃÜÂë
+	required string uid = 1;  // ç”¨æˆ·uid
+	required string code = 2;  // ç”¨æ¥æ ¡éªŒçš„å¯†ç 
 }
 message S2C_UserData
 {
 	required int32 ret = 1;
-	required bool newUser = 2; // ÊÇ·ñĞÂÓÃ»§
-	required DAT_UserData userData = 3; //Íæ¼ÒµÄĞÅÏ¢
+	required bool newUser = 2; // æ˜¯å¦æ–°ç”¨æˆ·
+	required DAT_UserData userData = 3; //ç©å®¶çš„ä¿¡æ¯
 }
