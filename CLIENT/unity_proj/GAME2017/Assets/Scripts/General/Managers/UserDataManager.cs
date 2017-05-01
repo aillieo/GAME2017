@@ -13,24 +13,10 @@ namespace GAME2017
 			return _userData;
 		}
 
-		bool _hasUserData = false;
-
-		public bool HasUserData()
-		{
-			return _hasUserData;
-		}
-
-		public bool IsNewUser { set ; get;}
-
 		public void Init(string _uid, string _code)
 		{
 			_userData.uid = _uid;
 			_userData.code = _code;
-		}
-
-		public void InitHandler()
-		{
-			GNetwork.MessageDispatcher.Instance.AddHandler (GNetwork.MessageTypes.S2C_UserData,OnInitBack);
 		}
 
 		public void RequestUserData()
@@ -41,25 +27,14 @@ namespace GAME2017
 			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_UserData,msg);
 		}
 
-		public void InitWithData(ProtoBuf.DAT_UserData userData)
+		public void UpdateUserData(ProtoBuf.DAT_UserData userData)
 		{
 			_userData.SetData(userData);
 		}
-
-		public void OnInitBack(object msg)
+			
+		public void AddNewHero(HeroData hd)
 		{
-			ProtoBuf.S2C_UserData _msg = (ProtoBuf.S2C_UserData)msg;
-			IsNewUser = _msg.newUser;
-			if (IsNewUser) 
-			{
-				// ...
-				// Init role
-			} 
-			else 
-			{
-				InitWithData (_msg.userData);
-			}
-			_hasUserData = true;
+			
 		}
 			
 	}

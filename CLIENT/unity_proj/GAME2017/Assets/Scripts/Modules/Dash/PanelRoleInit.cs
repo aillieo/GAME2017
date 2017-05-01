@@ -56,7 +56,7 @@ namespace GAME2017
 
 		[Serializable]
 		public class RoleDataList {
-			public RoleData[] roleDataList; 
+			public RoleDataStatic[] roleDataList; 
 		}
 
 

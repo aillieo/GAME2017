@@ -67,15 +67,24 @@ namespace GAME2017
 		}
 	}
 
-	[Serializable]
 	public class HeroData
+	{
+		public void SetData(ProtoBuf.DAT_HeroData dat)
+		{
+			
+		}
+	}
+
+
+	[Serializable]
+	public class HeroDataStatic
 	{
 		public string id;
 		// ...
 	}
 
 	[Serializable]
-	public class RoleData
+	public class RoleDataStatic
 	{
 		public string RoleId;
 		public int Strength;

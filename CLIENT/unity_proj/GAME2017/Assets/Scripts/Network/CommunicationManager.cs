@@ -99,6 +99,12 @@ namespace GNetwork{
 					MessageDispatcher.Instance.AddMessage (type, msg);
 					break;
 				}
+			case MessageTypes.S2C_NewHero:
+				{
+					ProtoBuf.S2C_NewHero msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_NewHero> (stream);
+					MessageDispatcher.Instance.AddMessage (type, msg);
+					break;
+				}
 			}
 
 
