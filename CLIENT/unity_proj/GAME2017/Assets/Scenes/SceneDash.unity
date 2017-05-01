@@ -5731,6 +5731,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b70a652fac33421497e2ef6f8220cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _panelDashBase: {fileID: 1472879686}
+  _panelRoleInit: {fileID: 1928998611}
 --- !u!1001 &1472879685
 Prefab:
   m_ObjectHideFlags: 0
@@ -5911,6 +5913,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 769b3b3255b5f4dc7bacd94d19a044d8, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1472879686 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1588124337388682, guid: 769b3b3255b5f4dc7bacd94d19a044d8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1472879685}
 --- !u!1 &1491547577
 GameObject:
   m_ObjectHideFlags: 0
@@ -7367,7 +7374,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1928998612
 RectTransform:
   m_ObjectHideFlags: 0

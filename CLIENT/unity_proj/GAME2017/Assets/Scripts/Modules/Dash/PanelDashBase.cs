@@ -13,6 +13,7 @@ namespace GAME2017
 		Text _textGem;
 		Text _textHeroTotal;
 		Text _textKey;
+		RawImage _roleAvatar;
 
 		// Use this for initialization
 		void Start () {
@@ -23,6 +24,7 @@ namespace GAME2017
 			_textGem = GameObject.Find ("PanelDashBase/TextGem").GetComponent<Text>();
 			_textHeroTotal = GameObject.Find ("PanelDashBase/TextHeroTotal").GetComponent<Text>();
 			_textKey = GameObject.Find ("PanelDashBase/TextKey").GetComponent<Text>();
+			_roleAvatar = GameObject.Find ("PanelDashBase/RoleAvatar").GetComponent<RawImage>();
 
 		}
 
@@ -40,6 +42,7 @@ namespace GAME2017
 			_textGem.text = "钻石 "+userData.gem.ToString();
 			_textHeroTotal.text = "英雄 "+userData.heroes.Count.ToString();
 			_textKey.text = "钥匙 "+(userData.keys.air +userData.keys.water + userData.keys.fire + userData.keys.earth).ToString ();
+			//_roleAvatar.texture = GAME2017.SpriteResourceManager.Instance.GetRolePicByID ("");
 
 		}
 	}

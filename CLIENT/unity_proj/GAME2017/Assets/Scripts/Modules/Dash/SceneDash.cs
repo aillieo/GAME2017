@@ -8,14 +8,14 @@ namespace GAME2017
 	public class SceneDash : MonoBehaviour {
 
 
-		GameObject _panelDashBase;
-		GameObject _panelRoleInit;
+		public GameObject _panelDashBase;
+		public GameObject _panelRoleInit;
 
 		// Use this for initialization
 		void Start () {
 
-			_panelDashBase = GameObject.Find ("PanelDashBase");
-			_panelRoleInit = GameObject.Find ("PanelRoleInit");
+			//_panelDashBase = GameObject.Find ("PanelDashBase");
+			//_panelRoleInit = GameObject.Find ("PanelRoleInit");
 
 			_panelDashBase.SetActive (false);
 			_panelRoleInit.SetActive (false);

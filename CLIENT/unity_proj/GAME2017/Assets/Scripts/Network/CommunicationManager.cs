@@ -93,6 +93,12 @@ namespace GNetwork{
 					MessageDispatcher.Instance.AddMessage (type, msg);
 					break;
 				}
+			case MessageTypes.S2C_RoleInit:
+				{
+					ProtoBuf.S2C_RoleInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_RoleInit> (stream);
+					MessageDispatcher.Instance.AddMessage (type, msg);
+					break;
+				}
 			}
 
 
