@@ -2,12 +2,12 @@ import "Dat_UserData.proto";
 
 package ProtoBuf;
 
-message C2S_UserData
+message C2S_UserInit
 {
 	required string uid = 1;  // 用户uid
 	required string code = 2;  // 用来校验的密码
 }
-message S2C_UserData
+message S2C_UserInit
 {
 	required int32 ret = 1;
 	required bool newUser = 2; // 是否新用户

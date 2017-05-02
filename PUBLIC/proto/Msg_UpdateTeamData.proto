@@ -1,0 +1,11 @@
+package ProtoBuf;  
+
+message C2S_UpdateTeamData
+{
+	required string team = 1;
+}
+message S2C_UpdateTeamData
+{
+	required int32 ret = 1;
+	required string team = 2;
+}

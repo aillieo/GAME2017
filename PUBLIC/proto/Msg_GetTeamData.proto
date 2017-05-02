@@ -1,0 +1,11 @@
+package ProtoBuf;
+
+message C2S_GetTeamData
+{
+	repeated string teams= 1; 
+}
+message S2C_GetTeamData
+{
+	required int32 ret = 1;
+	repeated string teams = 2;
+}

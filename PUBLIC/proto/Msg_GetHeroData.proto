@@ -1,0 +1,13 @@
+import "Dat_HeroData.proto";
+
+package ProtoBuf;  
+
+message C2S_GetHeroData
+{
+	repeated string heroes = 1; 
+}
+message S2C_GetHeroData
+{
+	required int32 ret = 1;
+	repeated DAT_HeroData heroes = 2;
+}

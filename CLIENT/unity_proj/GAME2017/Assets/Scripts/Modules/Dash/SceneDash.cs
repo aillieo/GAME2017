@@ -36,6 +36,13 @@ namespace GAME2017
 			UIManager.Instance.HideWaiting ();
 
 			ProtoBuf.S2C_UserData _msg = (ProtoBuf.S2C_UserData)msg;
+
+			if (_msg.ret != 0) 
+			{
+				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));
+				return;
+			}
+
 			bool isNewUser = _msg.newUser;
 			if (isNewUser) 
 			{
@@ -58,7 +65,7 @@ namespace GAME2017
 			ProtoBuf.S2C_RoleInit _msg = msg as ProtoBuf.S2C_RoleInit;
 			if (_msg.ret != 0) 
 			{
-				UIManager.Instance.ShowAlert ("error code : "+_msg.ret.ToString());				
+				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));				
 			}
 			else 
 			{
@@ -75,7 +82,7 @@ namespace GAME2017
 			ProtoBuf.S2C_NewHero _msg = msg as ProtoBuf.S2C_NewHero;
 			if (_msg.ret != 0) 
 			{
-				UIManager.Instance.ShowAlert ("error code : "+_msg.ret.ToString());	
+				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));		
 				return;
 			}
 

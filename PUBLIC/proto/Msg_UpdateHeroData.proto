@@ -1,0 +1,13 @@
+import "Dat_HeroData.proto";
+
+package ProtoBuf;
+
+message C2S_UpdateHeroData
+{
+	required DAT_HeroData hero = 1;
+}
+message S2C_UpdateHeroData
+{
+	required int32 ret = 1;
+	required DAT_HeroData hero = 2;
+}

@@ -54,6 +54,9 @@ namespace GAME2017
 
 			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,HandleMessage);
 
+			// temporary solution and this Init will be a very time-consuming operation
+			LanguageManager.Instance.Init ();
+
         }
 
         // Update is called once per frame
@@ -83,7 +86,7 @@ namespace GAME2017
 			S2C_Login _msg = msg as S2C_Login;
 			if (_msg.ret != 0) 
 			{
-				_tip.text = "error code " + _msg.ret.ToString ();				
+				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage (_msg.ret));
 			} 
 			else 
 			{
