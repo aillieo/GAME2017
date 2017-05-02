@@ -1603,7 +1603,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 319115218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1235093008}
+        m_MethodName: OnUseKeyClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &319115218
@@ -1793,6 +1804,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6057fc09f268e43048c113575df39d2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textNickname: {fileID: 2015027162}
+  _textLv: {fileID: 1841581935}
+  _textHeroTotal: {fileID: 1592818182}
+  _textRoleStrength: {fileID: 391420882}
+  _textRoleAgility: {fileID: 2042470093}
+  _textRoleMagic: {fileID: 1305463056}
+  _textRoleEPAir: {fileID: 228105890}
+  _textRoleEPWater: {fileID: 506332451}
+  _textRoleEPFire: {fileID: 1031874806}
+  _textRoleEPEarth: {fileID: 161030622}
+  _roleImage: {fileID: 78620373}
 --- !u!114 &375271998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2626,7 +2648,7 @@ GameObject:
   - component: {fileID: 470771387}
   - component: {fileID: 470771386}
   m_Layer: 5
-  m_Name: TextKeyType2
+  m_Name: TextKeyNum2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3518,7 +3540,7 @@ GameObject:
   - component: {fileID: 711500297}
   - component: {fileID: 711500296}
   m_Layer: 5
-  m_Name: TextKeyType3
+  m_Name: TextKeyNum3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6169,6 +6191,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc198ec76a834db28d0228551688370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _textKeyNum1: {fileID: 2025199723}
+  _textKeyNum2: {fileID: 470771386}
+  _textKeyNum3: {fileID: 711500296}
+  _textKeyNum4: {fileID: 1552386086}
+  _toggle1: {fileID: 614916459}
+  _toggle2: {fileID: 602979874}
+  _toggle3: {fileID: 701075356}
+  _toggle4: {fileID: 1491547579}
 --- !u!1 &1250257320
 GameObject:
   m_ObjectHideFlags: 0
@@ -7649,7 +7679,7 @@ GameObject:
   - component: {fileID: 1552386087}
   - component: {fileID: 1552386086}
   m_Layer: 5
-  m_Name: TextKeyType4
+  m_Name: TextKeyNum4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9238,6 +9268,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c1ff9ad0abf64796bce13da2d19aad4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _toggle1: {fileID: 1942198222}
+  _toggle2: {fileID: 931570147}
+  _toggle3: {fileID: 1120999331}
 --- !u!114 &1928998615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9597,7 +9630,7 @@ GameObject:
   - component: {fileID: 2025199724}
   - component: {fileID: 2025199723}
   m_Layer: 5
-  m_Name: TextKeyType1
+  m_Name: TextKeyNum1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

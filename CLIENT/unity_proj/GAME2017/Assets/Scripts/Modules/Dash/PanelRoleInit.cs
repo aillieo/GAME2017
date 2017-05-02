@@ -10,18 +10,11 @@ namespace GAME2017
 {
 	public class PanelRoleInit : MonoBehaviour {
 
-		int index = 0;
 		RoleDataList _roleDataList = new RoleDataList();
-		Toggle _toggle1, _toggle2, _toggle3 ;
+		public Toggle _toggle1, _toggle2, _toggle3 ;
 
 		// Use this for initialization
 		void Start () {
-
-			_toggle1 = GameObject.Find ("Toggle1").GetComponent<Toggle>();
-			_toggle2 = GameObject.Find ("Toggle2").GetComponent<Toggle>();
-			_toggle3 = GameObject.Find ("Toggle3").GetComponent<Toggle>();
-
-			LoadData ();
 
 		}
 
@@ -30,9 +23,14 @@ namespace GAME2017
 
 		}
 
+		void OnEnable()
+		{
+			LoadData ();
+		}
 
 		public void OnButtonConfirmClick()
 		{
+			int index = 0;
 
 			if (_toggle1.isOn) {
 				index = 1;
@@ -44,7 +42,7 @@ namespace GAME2017
 				
 			if (index > 0) {
 				
-				Debug.Log ("ROLE INDEX " + _roleDataList.roleDataList[index - 1].RoleId);
+				//Debug.Log ("ROLE ID " + _roleDataList.roleDataList[index - 1].RoleId);
 
 				ProtoBuf.C2S_RoleInit msg = new ProtoBuf.C2S_RoleInit ();
 				msg.roleID = _roleDataList.roleDataList[index - 1].RoleId;

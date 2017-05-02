@@ -25,6 +25,7 @@ namespace GAME2017
 
 		}
 
+
 		public void LoadUserData (){
 
 			UserData userData = UserDataManager.Instance.GetUserData ();
@@ -34,7 +35,7 @@ namespace GAME2017
 			_textGem.text = "钻石 "+userData.gem.ToString();
 			_textHeroTotal.text = "英雄 "+userData.heroes.Count.ToString();
 			_textKey.text = "钥匙 "+(userData.keys.air +userData.keys.water + userData.keys.fire + userData.keys.earth).ToString ();
-			_roleAvatar.texture = SpriteResourceManager.Instance.GetRoleHeadByID (userData.roleId);
+			_roleAvatar.texture = SpriteResourceManager.Instance.GetRoleAvatarByID (userData.roleId);
 
 		}
 	}

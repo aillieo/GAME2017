@@ -31,6 +31,7 @@ namespace GAME2017
 		public void UpdateUserData(ProtoBuf.DAT_UserData userData)
 		{
 			_userData.SetData(userData);
+			//_userData.roleId = "R001";
 		}
 			
 		public void AddNewHero(HeroData hd)

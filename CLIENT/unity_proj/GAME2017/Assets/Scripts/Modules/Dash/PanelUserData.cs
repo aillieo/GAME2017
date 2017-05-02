@@ -7,20 +7,21 @@ namespace GAME2017
 {
 	public class PanelUserData : MonoBehaviour {
 
-		Text _textNickname;
-		Text _textLv;
-		Text _textHeroTotal;
-		Text _textRoleStrength;
-		Text _textRoleAgility;
-		Text _textRoleMagic;
-		Text _textRoleEPAir;
-		Text _textRoleEPWater;
-		Text _textRoleEPFire;
-		Text _textRoleEPEarth;
+		public Text _textNickname;
+		public Text _textLv;
+		public Text _textHeroTotal;
+		public Text _textRoleStrength;
+		public Text _textRoleAgility;
+		public Text _textRoleMagic;
+		public Text _textRoleEPAir;
+		public Text _textRoleEPWater;
+		public Text _textRoleEPFire;
+		public Text _textRoleEPEarth;
+		public RawImage _roleImage;
 
 		// Use this for initialization
 		void Start () {
-
+/*
 			_textNickname = GameObject.Find ("PanelUserData/TextNickname").GetComponent<Text>();
 			_textLv = GameObject.Find("PanelUserData/TextLv").GetComponent<Text>();
 			_textHeroTotal = GameObject.Find("PanelUserData/TextHeroTotal").GetComponent<Text>();
@@ -31,9 +32,9 @@ namespace GAME2017
 			_textRoleEPWater = GameObject.Find("PanelUserData/TextRoleEPWater").GetComponent<Text>();
 			_textRoleEPFire = GameObject.Find("PanelUserData/TextRoleEPFire").GetComponent<Text>();
 			_textRoleEPEarth = GameObject.Find("PanelUserData/TextRoleEPEarth").GetComponent<Text>();
+*/
 
 
-			LoadData ();
 		}
 
 		// Update is called once per frame
@@ -41,6 +42,10 @@ namespace GAME2017
 
 		}
 
+		void OnEnable()
+		{
+			LoadData ();
+		}
 
 		void LoadData()
 		{
@@ -57,6 +62,7 @@ namespace GAME2017
 			_textRoleEPWater.text = "水 " + ud.eleProperty.water.ToString ();
 			_textRoleEPFire.text = "火 " +ud.eleProperty.fire.ToString ();
 			_textRoleEPEarth.text = "土 " + ud.eleProperty.earth.ToString ();
+			_roleImage.texture = SpriteResourceManager.Instance.GetRoleImageByID (ud.roleId);
 
 		}
 	}

@@ -14,14 +14,14 @@ namespace GAME2017
 		}
 
 
-		public Texture GetRoleHeadByID(string roleID)
+		public Texture GetRoleAvatarByID(string roleID)
 		{
 			return Resources.Load<Sprite> ("Sprites/Roles/R_128_" + roleID).texture;
 		}
 
-		public Texture GetRoleAvatarByID(string roleID)
+		public Texture GetRoleImageByID(string roleID)
 		{
-			return Resources.Load<Sprite> ("Sprites/Roles/R_128_" + roleID).texture;
+			return Resources.Load<Sprite> ("Sprites/Roles/R_500_" + roleID).texture;
 		}
 
 	}

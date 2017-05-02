@@ -21,7 +21,7 @@ namespace GAME2017
 
 		}
 
-		public void OnClickHeroImage()
+		public void OnClickHeroPad()
 		{
 			UIManager.Instance.OpenPanel (_heroDataPanel);
 
