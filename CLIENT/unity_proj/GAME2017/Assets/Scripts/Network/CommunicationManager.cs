@@ -87,9 +87,9 @@ namespace GNetwork{
 					MessageDispatcher.Instance.AddMessage (type, msg);
 					break;
 				}
-			case MessageTypes.S2C_UserData:
+			case MessageTypes.S2C_UserInit:
 				{
-					ProtoBuf.S2C_UserData msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_UserData> (stream);
+					ProtoBuf.S2C_UserInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_UserInit> (stream);
 					MessageDispatcher.Instance.AddMessage (type, msg);
 					break;
 				}

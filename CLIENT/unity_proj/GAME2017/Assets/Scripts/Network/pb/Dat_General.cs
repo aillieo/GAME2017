@@ -48,31 +48,4 @@ namespace ProtoBuf
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DAT_ElementType")]
-  public partial class DAT_ElementType : global::ProtoBuf.IExtensible
-  {
-    public DAT_ElementType() {}
-    
-    [global::ProtoBuf.ProtoContract(Name=@"ele")]
-    public enum ele
-    {
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"Air", Value=0)]
-      Air = 0,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"Water", Value=1)]
-      Water = 1,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"Fire", Value=2)]
-      Fire = 2,
-            
-      [global::ProtoBuf.ProtoEnum(Name=@"Earth", Value=3)]
-      Earth = 3
-    }
-  
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
 }

@@ -7,31 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from: Msg_RoleInit.proto
-// Note: requires additional types generated from: Dat_UserData.proto
+// Generated from: Msg_UpdateTeamData.proto
 namespace ProtoBuf
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"C2S_RoleInit")]
-  public partial class C2S_RoleInit : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"C2S_UpdateTeamData")]
+  public partial class C2S_UpdateTeamData : global::ProtoBuf.IExtensible
   {
-    public C2S_RoleInit() {}
+    public C2S_UpdateTeamData() {}
     
-    private string _roleID;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"roleID", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string roleID
+    private string _team;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"team", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string team
     {
-      get { return _roleID; }
-      set { _roleID = value; }
+      get { return _team; }
+      set { _team = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2C_RoleInit")]
-  public partial class S2C_RoleInit : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"S2C_UpdateTeamData")]
+  public partial class S2C_UpdateTeamData : global::ProtoBuf.IExtensible
   {
-    public S2C_RoleInit() {}
+    public S2C_UpdateTeamData() {}
     
     private int _ret;
     [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"ret", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -40,12 +39,12 @@ namespace ProtoBuf
       get { return _ret; }
       set { _ret = value; }
     }
-    private ProtoBuf.DAT_UserData _userData;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"userData", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public ProtoBuf.DAT_UserData userData
+    private string _team;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"team", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string team
     {
-      get { return _userData; }
-      set { _userData = value; }
+      get { return _team; }
+      set { _team = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

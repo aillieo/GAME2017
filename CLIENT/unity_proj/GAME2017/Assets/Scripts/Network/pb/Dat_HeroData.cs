@@ -44,9 +44,9 @@ namespace ProtoBuf
       get { return _experience; }
       set { _experience = value; }
     }
-    private ProtoBuf.DAT_ElementType _elementType;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"elementType", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public ProtoBuf.DAT_ElementType elementType
+    private int _elementType;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"elementType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int elementType
     {
       get { return _elementType; }
       set { _elementType = value; }

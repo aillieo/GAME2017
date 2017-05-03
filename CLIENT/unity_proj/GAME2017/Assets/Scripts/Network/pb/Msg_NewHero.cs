@@ -8,7 +8,6 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Msg_NewHero.proto
-// Note: requires additional types generated from: Dat_General.proto
 // Note: requires additional types generated from: Dat_HeroData.proto
 namespace ProtoBuf
 {
@@ -17,12 +16,12 @@ namespace ProtoBuf
   {
     public C2S_NewHero() {}
     
-    private ProtoBuf.DAT_ElementType _elementType;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"elementType", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public ProtoBuf.DAT_ElementType elementType
+    private int _keyType;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"keyType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int keyType
     {
-      get { return _elementType; }
-      set { _elementType = value; }
+      get { return _keyType; }
+      set { _keyType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

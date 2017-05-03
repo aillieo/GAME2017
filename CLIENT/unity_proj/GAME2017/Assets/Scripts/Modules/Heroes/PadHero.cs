@@ -1,13 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GAME2017
 {
 	public class PadHero : MonoBehaviour {
 
 
-		string _heroUID;
+		HeroData _heroData;
+
+		public Text _heroName;
+		public Text _heroLv;
+		public Text _heroEleType;
+		public RawImage _heroPic;
+		public RawImage _heroPicCover;
 
 		// Use this for initialization
 		void Start () {
@@ -19,8 +26,15 @@ namespace GAME2017
 
 		}
 
-		public void SetHeroData (GAME2017.HeroData data)
+		void OnEnable()
 		{
+			
+		}
+
+		public void SetHeroData (HeroData hd)
+		{
+			_heroData = hd;
+			_heroName.text = hd.id;
 
 		}
 
@@ -28,6 +42,8 @@ namespace GAME2017
 		{
 
 		}
+
+
 	}
 
 }

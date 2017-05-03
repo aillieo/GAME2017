@@ -31,11 +31,11 @@ namespace GAME2017
 
 
 
-		void OnUserDataBack(object msg)
+		void OnUserInitBack(object msg)
 		{
 			UIManager.Instance.HideWaiting ();
 
-			ProtoBuf.S2C_UserData _msg = (ProtoBuf.S2C_UserData)msg;
+			ProtoBuf.S2C_UserInit _msg = (ProtoBuf.S2C_UserInit)msg;
 
 			if (_msg.ret != 0) 
 			{
@@ -55,6 +55,13 @@ namespace GAME2017
 				DestroyObject (_panelRoleInit.gameObject);
 				_panelDashBase.SetActive (true);
 				_panelDashBase.GetComponent<PanelDashBase> ().LoadUserData ();
+
+				// request heroes data
+				ProtoBuf.C2S_GetHeroData chd = new ProtoBuf.C2S_GetHeroData();
+				List<string> _heroes = _msg.userData.heroes;
+				chd.heroes.AddRange(_heroes);
+				GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_GetHeroData,chd);
+
 			}
 
 		}
@@ -62,6 +69,9 @@ namespace GAME2017
 
 		void OnRoleInitBack(object msg)
 		{
+			
+			UIManager.Instance.HideWaiting ();
+			
 			ProtoBuf.S2C_RoleInit _msg = msg as ProtoBuf.S2C_RoleInit;
 			if (_msg.ret != 0) 
 			{
@@ -77,8 +87,30 @@ namespace GAME2017
 			}
 		}
 
+		void OnGetHeroDataBack(object msg)
+		{
+			UIManager.Instance.HideWaiting ();
+			ProtoBuf.S2C_GetHeroData _msg = msg as ProtoBuf.S2C_GetHeroData;
+			if (_msg.ret != 0) 
+			{
+				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));		
+				return;
+			}
+
+			foreach (ProtoBuf.DAT_HeroData phd in _msg.heroes) {
+				
+				HeroData hd = new HeroData();
+				hd.SetData (phd);
+				UserDataManager.Instance.SetHeroData (hd);
+			}
+
+
+
+		}
+
 		void OnNewHeroBack(object msg)
 		{
+			UIManager.Instance.HideWaiting ();
 			ProtoBuf.S2C_NewHero _msg = msg as ProtoBuf.S2C_NewHero;
 			if (_msg.ret != 0) 
 			{
@@ -105,10 +137,13 @@ namespace GAME2017
 		void InitHandlers()
 		{
 			// get user data
-			GNetwork.MessageDispatcher.Instance.AddHandler (GNetwork.MessageTypes.S2C_UserData,OnUserDataBack);
+			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_UserInit,OnUserInitBack);
+
+			// get hero(es)
+			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_GetHeroData,OnGetHeroDataBack);
 
 			// get new hero
-			GNetwork.MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_NewHero, OnNewHeroBack);
+			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_NewHero, OnNewHeroBack);
 
 		}
 

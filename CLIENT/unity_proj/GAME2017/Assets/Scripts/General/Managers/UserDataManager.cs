@@ -14,6 +14,15 @@ namespace GAME2017
 			return _userData;
 		}
 
+		public HeroData GetHeroData(string heroUid)
+		{
+			if (_heroes.ContainsKey (heroUid)) {
+				return _heroes [heroUid];
+			}
+				
+			return null;
+		}
+
 		public void Init(string _uid, string _code)
 		{
 			_userData.uid = _uid;
@@ -22,22 +31,30 @@ namespace GAME2017
 
 		public void RequestUserData()
 		{
-			ProtoBuf.C2S_UserData msg = new ProtoBuf.C2S_UserData ();
+			ProtoBuf.C2S_UserInit msg = new ProtoBuf.C2S_UserInit ();
 			msg.uid = _userData.uid;
 			msg.code = _userData.code;
-			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_UserData,msg);
+			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_UserInit,msg);
 		}
 
 		public void UpdateUserData(ProtoBuf.DAT_UserData userData)
 		{
 			_userData.SetData(userData);
-			//_userData.roleId = "R001";
+
 		}
 			
 		public void AddNewHero(HeroData hd)
 		{
 			_userData.heroes.Add (hd.uid);
 			_heroes [hd.uid] = hd;
+		}
+
+		public void SetHeroData(HeroData hd)
+		{
+			if(_heroes.ContainsKey(hd.uid))
+			{
+				_heroes [hd.uid] = hd;
+			}
 		}
 			
 	}
