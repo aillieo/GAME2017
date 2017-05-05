@@ -80,7 +80,7 @@ namespace GAME2017
 		public int mDef;
 		public int aAtk;
 		public int elemType;
-		public int speed;
+		public float speed;
 		public int move;
 		public int atkRange;
 		public int hp;
