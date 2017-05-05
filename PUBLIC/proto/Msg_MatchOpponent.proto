@@ -1,0 +1,17 @@
+import "Dat_HeroData.proto";
+import "Dat_UserData.proto";
+
+package ProtoBuf;
+
+message C2S_MatchOpponent
+{
+	required string team = 1;
+}
+message S2C_MatchOpponent
+{
+	required int32 ret = 1;
+	required string battleId = 2;
+	required DAT_UserData opponent = 3; // 对手用户信息
+	required string opponentTeam = 4; // 对手队伍id
+	repeated DAT_HeroData opponentHeroes = 5; //对手英雄
+}

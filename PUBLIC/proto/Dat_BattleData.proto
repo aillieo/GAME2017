@@ -1,0 +1,26 @@
+package ProtoBuf;  
+
+message DAT_HeroDataInBattle
+{
+	required string uid = 1; // 唯一id 用于数据库记录
+	required int32 physicalAttack = 2; // 物理攻击
+	required int32 physicalDefence = 3; // 物理防御
+	required int32 magicalAttack = 4; // 魔法攻击
+	required int32 magicalDefence = 5; // 魔法防御
+	required int32 absoluteAttack = 6; // 绝对攻击 
+	required float speed = 7; // 行动速度
+	required int32 move = 8; // 移动格子数
+	required int32 attackRange = 9; //攻击范围
+	required int32 hp = 10; // 生命值
+	required float progress = 11; // 行动进度
+	repeated string buffs = 12; // 英雄的buff列表
+}
+
+message DAT_HeroBuff
+{
+	required string uid = 1; // 唯一id
+	required string id = 2; // buffid
+	required int32 type = 3; // buff类别
+	repeated int32 iparas = 4; // 参数列表
+	repeated float fparas = 5; // 参数列表
+}

@@ -1,0 +1,14 @@
+import "Dat_BattleData.proto";
+
+package ProtoBuf;
+
+message C2S_BattleInit
+{
+	required string battleId = 1; //
+}
+message S2C_BattleInit
+{
+	required int32 ret = 1; // 
+	repeated DAT_HeroDataInBattle selfData = 2;
+	repeated DAT_HeroDataInBattle enemyData = 3;
+}

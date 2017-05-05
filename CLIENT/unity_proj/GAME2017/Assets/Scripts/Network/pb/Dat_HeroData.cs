@@ -86,9 +86,9 @@ namespace ProtoBuf
       get { return _absoluteAttack; }
       set { _absoluteAttack = value; }
     }
-    private int _speed;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"speed", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int speed
+    private float _speed;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    public float speed
     {
       get { return _speed; }
       set { _speed = value; }

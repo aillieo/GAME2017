@@ -14,7 +14,7 @@ message DAT_HeroData
 	required int32 magicalAttack = 8; // 魔法攻击
 	required int32 magicalDefence = 9; // 魔法防御
 	required int32 absoluteAttack = 10; // 绝对攻击 
-	required int32 speed = 11; // 行动速度
+	required float speed = 11; // 行动速度
 	required int32 move = 12; // 移动格子数
 	required int32 attackRange = 13; //攻击范围
 	required int32 hp = 14; // 生命值
