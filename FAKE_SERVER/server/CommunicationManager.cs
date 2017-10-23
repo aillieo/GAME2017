@@ -85,24 +85,36 @@ namespace fake_server
 		}
 
 
-		private void HandleMessage(ProtoBuf.C2S_Login msg)
+		private void HandleMessage(ProtoBuf.C2S_Login req)
 		{
-			
+			Console.WriteLine (req.ToString());
+			ProtoBuf.S2C_Login resp = new ProtoBuf.S2C_Login();
+			resp.ret = 0;
+			resp.uid = "1000";
+			resp.code = "1000";
+			SendMessage(MessageTypes.S2C_Login, resp);
 		}
 
-		private void HandleMessage(ProtoBuf.C2S_UserInit msg)
+		private void HandleMessage(ProtoBuf.C2S_UserInit req)
 		{
+			Console.WriteLine (req.ToString());
+			ProtoBuf.S2C_UserInit resp = new ProtoBuf.S2C_UserInit();
+			resp.ret = 0;
+			ProtoBuf.DAT_UserData userData = new ProtoBuf.DAT_UserData ();
+			userData.nickname = "PAPAPA";
+			resp.userData = userData;
 
+			SendMessage(MessageTypes.S2C_UserInit, resp);
 		}
 
-		private void HandleMessage(ProtoBuf.C2S_RoleInit msg)
+		private void HandleMessage(ProtoBuf.C2S_RoleInit req)
 		{
-
+			Console.WriteLine (req.ToString());
 		}
 
-		private void HandleMessage(ProtoBuf.C2S_NewHero msg)
+		private void HandleMessage(ProtoBuf.C2S_NewHero req)
 		{
-
+			Console.WriteLine (req.ToString());
 		}
 	}
 }
