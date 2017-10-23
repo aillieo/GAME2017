@@ -19,6 +19,7 @@
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
     <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>full</DebugType>
@@ -28,6 +29,7 @@
     <WarningLevel>4</WarningLevel>
     <Externalconsole>true</Externalconsole>
     <PlatformTarget>x86</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -35,8 +37,671 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BclHelpers.cs">
+      <Link>protobuf-net\BclHelpers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BufferExtension.cs">
+      <Link>protobuf-net\BufferExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BufferPool.cs">
+      <Link>protobuf-net\BufferPool.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\CallbackAttributes.cs">
+      <Link>protobuf-net\CallbackAttributes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\DataFormat.cs">
+      <Link>protobuf-net\DataFormat.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Extensible.cs">
+      <Link>protobuf-net\Extensible.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ExtensibleUtil.cs">
+      <Link>protobuf-net\ExtensibleUtil.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\GlobalSuppressions.cs">
+      <Link>protobuf-net\GlobalSuppressions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Helpers.cs">
+      <Link>protobuf-net\Helpers.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\IExtensible.cs">
+      <Link>protobuf-net\IExtensible.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\IExtension.cs">
+      <Link>protobuf-net\IExtension.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ImplicitFields.cs">
+      <Link>protobuf-net\ImplicitFields.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\KeyValuePairProxy.cs">
+      <Link>protobuf-net\KeyValuePairProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\NetObjectCache.cs">
+      <Link>protobuf-net\NetObjectCache.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\PrefixStyle.cs">
+      <Link>protobuf-net\PrefixStyle.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoContractAttribute.cs">
+      <Link>protobuf-net\ProtoContractAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoConverterAttribute.cs">
+      <Link>protobuf-net\ProtoConverterAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoEnumAttribute.cs">
+      <Link>protobuf-net\ProtoEnumAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoException.cs">
+      <Link>protobuf-net\ProtoException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoIgnoreAttribute.cs">
+      <Link>protobuf-net\ProtoIgnoreAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoIncludeAttribute.cs">
+      <Link>protobuf-net\ProtoIncludeAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoMemberAttribute.cs">
+      <Link>protobuf-net\ProtoMemberAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoReader.cs">
+      <Link>protobuf-net\ProtoReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoWriter.cs">
+      <Link>protobuf-net\ProtoWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\SerializationContext.cs">
+      <Link>protobuf-net\SerializationContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializer.cs">
+      <Link>protobuf-net\Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\SubItemToken.cs">
+      <Link>protobuf-net\SubItemToken.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\WireType.cs">
+      <Link>protobuf-net\WireType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler\CompilerContext.cs">
+      <Link>protobuf-net\Compiler\CompilerContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler\CompilerDelegates.cs">
+      <Link>protobuf-net\Compiler\CompilerDelegates.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler\Local.cs">
+      <Link>protobuf-net\Compiler\Local.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\AttributeMap.cs">
+      <Link>protobuf-net\Meta\AttributeMap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\BasicList.cs">
+      <Link>protobuf-net\Meta\BasicList.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\CallbackSet.cs">
+      <Link>protobuf-net\Meta\CallbackSet.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\MetaType.cs">
+      <Link>protobuf-net\Meta\MetaType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\RuntimeTypeModel.cs">
+      <Link>protobuf-net\Meta\RuntimeTypeModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\SubType.cs">
+      <Link>protobuf-net\Meta\SubType.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\TypeFormatEventArgs.cs">
+      <Link>protobuf-net\Meta\TypeFormatEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\TypeModel.cs">
+      <Link>protobuf-net\Meta\TypeModel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\ValueMember.cs">
+      <Link>protobuf-net\Meta\ValueMember.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ArrayDecorator.cs">
+      <Link>protobuf-net\Serializers\ArrayDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\BlobSerializer.cs">
+      <Link>protobuf-net\Serializers\BlobSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\BooleanSerializer.cs">
+      <Link>protobuf-net\Serializers\BooleanSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ByteSerializer.cs">
+      <Link>protobuf-net\Serializers\ByteSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\CharSerializer.cs">
+      <Link>protobuf-net\Serializers\CharSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\CompiledSerializer.cs">
+      <Link>protobuf-net\Serializers\CompiledSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DateTimeSerializer.cs">
+      <Link>protobuf-net\Serializers\DateTimeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DecimalSerializer.cs">
+      <Link>protobuf-net\Serializers\DecimalSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DefaultValueDecorator.cs">
+      <Link>protobuf-net\Serializers\DefaultValueDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DoubleSerializer.cs">
+      <Link>protobuf-net\Serializers\DoubleSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\EnumSerializer.cs">
+      <Link>protobuf-net\Serializers\EnumSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\FieldDecorator.cs">
+      <Link>protobuf-net\Serializers\FieldDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\GuidSerializer.cs">
+      <Link>protobuf-net\Serializers\GuidSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\IProtoSerializer.cs">
+      <Link>protobuf-net\Serializers\IProtoSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\IProtoTypeSerializer.cs">
+      <Link>protobuf-net\Serializers\IProtoTypeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ISerializerProxy.cs">
+      <Link>protobuf-net\Serializers\ISerializerProxy.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ImmutableCollectionDecorator.cs">
+      <Link>protobuf-net\Serializers\ImmutableCollectionDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\Int16Serializer.cs">
+      <Link>protobuf-net\Serializers\Int16Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\Int32Serializer.cs">
+      <Link>protobuf-net\Serializers\Int32Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\Int64Serializer.cs">
+      <Link>protobuf-net\Serializers\Int64Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\KeyValuePairDecorator.cs">
+      <Link>protobuf-net\Serializers\KeyValuePairDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ListDecorator.cs">
+      <Link>protobuf-net\Serializers\ListDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\MemberSpecifiedDecorator.cs">
+      <Link>protobuf-net\Serializers\MemberSpecifiedDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\NetObjectSerializer.cs">
+      <Link>protobuf-net\Serializers\NetObjectSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\NullDecorator.cs">
+      <Link>protobuf-net\Serializers\NullDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ParseableSerializer.cs">
+      <Link>protobuf-net\Serializers\ParseableSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\PropertyDecorator.cs">
+      <Link>protobuf-net\Serializers\PropertyDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ProtoDecoratorBase.cs">
+      <Link>protobuf-net\Serializers\ProtoDecoratorBase.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ReflectedUriDecorator.cs">
+      <Link>protobuf-net\Serializers\ReflectedUriDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SByteSerializer.cs">
+      <Link>protobuf-net\Serializers\SByteSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SingleSerializer.cs">
+      <Link>protobuf-net\Serializers\SingleSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\StringSerializer.cs">
+      <Link>protobuf-net\Serializers\StringSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SubItemSerializer.cs">
+      <Link>protobuf-net\Serializers\SubItemSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SurrogateSerializer.cs">
+      <Link>protobuf-net\Serializers\SurrogateSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SystemTypeSerializer.cs">
+      <Link>protobuf-net\Serializers\SystemTypeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TagDecorator.cs">
+      <Link>protobuf-net\Serializers\TagDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TimeSpanSerializer.cs">
+      <Link>protobuf-net\Serializers\TimeSpanSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TupleSerializer.cs">
+      <Link>protobuf-net\Serializers\TupleSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TypeSerializer.cs">
+      <Link>protobuf-net\Serializers\TypeSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UInt16Serializer.cs">
+      <Link>protobuf-net\Serializers\UInt16Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UInt32Serializer.cs">
+      <Link>protobuf-net\Serializers\UInt32Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UInt64Serializer.cs">
+      <Link>protobuf-net\Serializers\UInt64Serializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UriDecorator.cs">
+      <Link>protobuf-net\Serializers\UriDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoBehaviorAttribute.cs">
+      <Link>protobuf-net\ServiceModel\ProtoBehaviorAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoBehaviorExtensionElement.cs">
+      <Link>protobuf-net\ServiceModel\ProtoBehaviorExtensionElement.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoEndpointBehavior.cs">
+      <Link>protobuf-net\ServiceModel\ProtoEndpointBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoOperationBehavior.cs">
+      <Link>protobuf-net\ServiceModel\ProtoOperationBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\XmlProtoSerializer.cs">
+      <Link>protobuf-net\ServiceModel\XmlProtoSerializer.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_BattleData.cs">
+      <Link>pb\Dat_BattleData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_General.cs">
+      <Link>pb\Dat_General.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_HeroData.cs">
+      <Link>pb\Dat_HeroData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_UserData.cs">
+      <Link>pb\Dat_UserData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_BattleInit.cs">
+      <Link>pb\Msg_BattleInit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetHeroData.cs">
+      <Link>pb\Msg_GetHeroData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetTeamData.cs">
+      <Link>pb\Msg_GetTeamData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_Login.cs">
+      <Link>pb\Msg_Login.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_MatchOpponent.cs">
+      <Link>pb\Msg_MatchOpponent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_NewHero.cs">
+      <Link>pb\Msg_NewHero.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_RoleInit.cs">
+      <Link>pb\Msg_RoleInit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateHeroData.cs">
+      <Link>pb\Msg_UpdateHeroData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateTeamData.cs">
+      <Link>pb\Msg_UpdateTeamData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UserInit.cs">
+      <Link>pb\Msg_UserInit.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\MessageTypes.cs">
+      <Link>MessageTypes.cs</Link>
+    </Compile>
+    <Compile Include="CommunicationManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="protobuf-net\" />
+    <Folder Include="pb\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BclHelpers.cs.meta">
+      <Link>protobuf-net\BclHelpers.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BufferExtension.cs.meta">
+      <Link>protobuf-net\BufferExtension.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BufferPool.cs.meta">
+      <Link>protobuf-net\BufferPool.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\CallbackAttributes.cs.meta">
+      <Link>protobuf-net\CallbackAttributes.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler.meta">
+      <Link>protobuf-net\Compiler.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\DataFormat.cs.meta">
+      <Link>protobuf-net\DataFormat.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Extensible.cs.meta">
+      <Link>protobuf-net\Extensible.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ExtensibleUtil.cs.meta">
+      <Link>protobuf-net\ExtensibleUtil.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\GlobalSuppressions.cs.meta">
+      <Link>protobuf-net\GlobalSuppressions.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Helpers.cs.meta">
+      <Link>protobuf-net\Helpers.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\IExtensible.cs.meta">
+      <Link>protobuf-net\IExtensible.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\IExtension.cs.meta">
+      <Link>protobuf-net\IExtension.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ImplicitFields.cs.meta">
+      <Link>protobuf-net\ImplicitFields.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\KeyValuePairProxy.cs.meta">
+      <Link>protobuf-net\KeyValuePairProxy.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta.meta">
+      <Link>protobuf-net\Meta.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\NetObjectCache.cs.meta">
+      <Link>protobuf-net\NetObjectCache.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\PrefixStyle.cs.meta">
+      <Link>protobuf-net\PrefixStyle.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Properties.meta">
+      <Link>protobuf-net\Properties.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoContractAttribute.cs.meta">
+      <Link>protobuf-net\ProtoContractAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoConverterAttribute.cs.meta">
+      <Link>protobuf-net\ProtoConverterAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoEnumAttribute.cs.meta">
+      <Link>protobuf-net\ProtoEnumAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoException.cs.meta">
+      <Link>protobuf-net\ProtoException.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoIgnoreAttribute.cs.meta">
+      <Link>protobuf-net\ProtoIgnoreAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoIncludeAttribute.cs.meta">
+      <Link>protobuf-net\ProtoIncludeAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoMemberAttribute.cs.meta">
+      <Link>protobuf-net\ProtoMemberAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoReader.cs.meta">
+      <Link>protobuf-net\ProtoReader.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoWriter.cs.meta">
+      <Link>protobuf-net\ProtoWriter.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\SerializationContext.cs.meta">
+      <Link>protobuf-net\SerializationContext.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializer.cs.meta">
+      <Link>protobuf-net\Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers.meta">
+      <Link>protobuf-net\Serializers.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel.meta">
+      <Link>protobuf-net\ServiceModel.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\SubItemToken.cs.meta">
+      <Link>protobuf-net\SubItemToken.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Web.meta">
+      <Link>protobuf-net\Web.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\WireType.cs.meta">
+      <Link>protobuf-net\WireType.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\project.json">
+      <Link>protobuf-net\project.json</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\project.json.meta">
+      <Link>protobuf-net\project.json.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\protobuf-net.csproj">
+      <Link>protobuf-net\protobuf-net.csproj</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\protobuf-net.csproj.meta">
+      <Link>protobuf-net\protobuf-net.csproj.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\protobuf_net.xproj">
+      <Link>protobuf-net\protobuf_net.xproj</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\protobuf_net.xproj.meta">
+      <Link>protobuf-net\protobuf_net.xproj.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler\CompilerContext.cs.meta">
+      <Link>protobuf-net\Compiler\CompilerContext.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler\CompilerDelegates.cs.meta">
+      <Link>protobuf-net\Compiler\CompilerDelegates.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Compiler\Local.cs.meta">
+      <Link>protobuf-net\Compiler\Local.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\AttributeMap.cs.meta">
+      <Link>protobuf-net\Meta\AttributeMap.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\BasicList.cs.meta">
+      <Link>protobuf-net\Meta\BasicList.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\CallbackSet.cs.meta">
+      <Link>protobuf-net\Meta\CallbackSet.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\MetaType.cs.meta">
+      <Link>protobuf-net\Meta\MetaType.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\RuntimeTypeModel.cs.meta">
+      <Link>protobuf-net\Meta\RuntimeTypeModel.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\SubType.cs.meta">
+      <Link>protobuf-net\Meta\SubType.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\TypeFormatEventArgs.cs.meta">
+      <Link>protobuf-net\Meta\TypeFormatEventArgs.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\TypeModel.cs.meta">
+      <Link>protobuf-net\Meta\TypeModel.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Meta\ValueMember.cs.meta">
+      <Link>protobuf-net\Meta\ValueMember.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ArrayDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\ArrayDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\BlobSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\BlobSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\BooleanSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\BooleanSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ByteSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\ByteSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\CharSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\CharSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\CompiledSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\CompiledSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DateTimeSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\DateTimeSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DecimalSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\DecimalSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DefaultValueDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\DefaultValueDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\DoubleSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\DoubleSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\EnumSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\EnumSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\FieldDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\FieldDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\GuidSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\GuidSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\IProtoSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\IProtoSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\IProtoTypeSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\IProtoTypeSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ISerializerProxy.cs.meta">
+      <Link>protobuf-net\Serializers\ISerializerProxy.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ImmutableCollectionDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\ImmutableCollectionDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\Int16Serializer.cs.meta">
+      <Link>protobuf-net\Serializers\Int16Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\Int32Serializer.cs.meta">
+      <Link>protobuf-net\Serializers\Int32Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\Int64Serializer.cs.meta">
+      <Link>protobuf-net\Serializers\Int64Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\KeyValuePairDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\KeyValuePairDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ListDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\ListDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\MemberSpecifiedDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\MemberSpecifiedDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\NetObjectSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\NetObjectSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\NullDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\NullDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ParseableSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\ParseableSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\PropertyDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\PropertyDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ProtoDecoratorBase.cs.meta">
+      <Link>protobuf-net\Serializers\ProtoDecoratorBase.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\ReflectedUriDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\ReflectedUriDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SByteSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\SByteSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SingleSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\SingleSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\StringSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\StringSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SubItemSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\SubItemSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SurrogateSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\SurrogateSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\SystemTypeSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\SystemTypeSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TagDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\TagDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TimeSpanSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\TimeSpanSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TupleSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\TupleSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\TypeSerializer.cs.meta">
+      <Link>protobuf-net\Serializers\TypeSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UInt16Serializer.cs.meta">
+      <Link>protobuf-net\Serializers\UInt16Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UInt32Serializer.cs.meta">
+      <Link>protobuf-net\Serializers\UInt32Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UInt64Serializer.cs.meta">
+      <Link>protobuf-net\Serializers\UInt64Serializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Serializers\UriDecorator.cs.meta">
+      <Link>protobuf-net\Serializers\UriDecorator.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoBehaviorAttribute.cs.meta">
+      <Link>protobuf-net\ServiceModel\ProtoBehaviorAttribute.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoBehaviorExtensionElement.cs.meta">
+      <Link>protobuf-net\ServiceModel\ProtoBehaviorExtensionElement.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoEndpointBehavior.cs.meta">
+      <Link>protobuf-net\ServiceModel\ProtoEndpointBehavior.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\ProtoOperationBehavior.cs.meta">
+      <Link>protobuf-net\ServiceModel\ProtoOperationBehavior.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\XmlProtoSerializer.cs.meta">
+      <Link>protobuf-net\ServiceModel\XmlProtoSerializer.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Web\TODO.txt">
+      <Link>protobuf-net\Web\TODO.txt</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Web\TODO.txt.meta">
+      <Link>protobuf-net\Web\TODO.txt.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_BattleData.cs.meta">
+      <Link>pb\Dat_BattleData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_General.cs.meta">
+      <Link>pb\Dat_General.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_HeroData.cs.meta">
+      <Link>pb\Dat_HeroData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_UserData.cs.meta">
+      <Link>pb\Dat_UserData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_BattleInit.cs.meta">
+      <Link>pb\Msg_BattleInit.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetHeroData.cs.meta">
+      <Link>pb\Msg_GetHeroData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetTeamData.cs.meta">
+      <Link>pb\Msg_GetTeamData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_Login.cs.meta">
+      <Link>pb\Msg_Login.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_MatchOpponent.cs.meta">
+      <Link>pb\Msg_MatchOpponent.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_NewHero.cs.meta">
+      <Link>pb\Msg_NewHero.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_RoleInit.cs.meta">
+      <Link>pb\Msg_RoleInit.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateHeroData.cs.meta">
+      <Link>pb\Msg_UpdateHeroData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateTeamData.cs.meta">
+      <Link>pb\Msg_UpdateTeamData.cs.meta</Link>
+    </None>
+    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UserInit.cs.meta">
+      <Link>pb\Msg_UserInit.cs.meta</Link>
+    </None>
+  </ItemGroup>
 </Project>

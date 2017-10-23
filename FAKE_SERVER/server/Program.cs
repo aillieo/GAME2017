@@ -58,8 +58,10 @@ namespace fake_server
 		void HandleClientConnected(Object client)
 		{
 			Socket s = (Socket)client;
+			CommunicationManager cm = new CommunicationManager (s);
+
 			byte[] lenBytes = new byte[4];
-			byte[] recvBytes = new byte[fake_server.Config.buffer_max_length];
+			byte[] recvBytes = new byte[Config.buffer_max_length];
 			int bytes;
 			while (true)
 			{
@@ -67,7 +69,9 @@ namespace fake_server
 				bytes = s.Receive(lenBytes, 4, 0);
 				if(bytes > 0)
 				{
-					len = BitConverter.ToInt32(lenBytes, 0);
+					System.Array.Reverse (lenBytes);
+					len = System.BitConverter.ToInt32(lenBytes, 0);
+
 				}
 				if (bytes < 0)
 				{
@@ -78,17 +82,8 @@ namespace fake_server
 				if (len > 0)
 				{
 					bytes = s.Receive(recvBytes, len , 0);
-					Message msg = new Message();
-					msg.ParseFromBytes(recvBytes, len);
-					Message msg_resp = MessageHandler.instance.HandleMessage (msg);
+					cm.Receive(recvBytes, len);
 
-					byte[] bMsg;
-					int len_resp = msg_resp.serializeToBytes(out bMsg);
-					byte[] bLen = BitConverter.GetBytes(len_resp);
-					byte[] bSend = new byte[bMsg.Length + 4];
-					Array.Copy(bLen, 0, bSend, 0, 4);
-					Array.Copy(bMsg, 0, bSend, 4, len_resp);
-					s.Send(bSend);
 				}
 				if (bytes < 0)
 				{
@@ -105,27 +100,4 @@ namespace fake_server
 			
 	}
 
-
-	class MessageHandler
-	{
-		public static readonly MessageHandler instance = new MessageHandler();
-
-		public Message HandleMessage(Message msg)
-		{
-			Message msg_resp = new Message ();
-
-			if(msg.Type == 0)
-			{
-				
-				msg_resp.Type = 0;
-				msg_resp.Content = "Server get your message : " + msg.Content ;
-			}
-
-			return msg_resp;
-		}
-
-
-
-		
-	}
 }
