@@ -19,6 +19,9 @@ namespace GNetwork
 		// Update is called once per frame
         void Update()
         {
+			CommunicationManager.Instance.Check (Time.deltaTime);
+
+			/*
             lock (_msgQueue)
             {
                 if (_msgQueue.Count > 0)
@@ -33,6 +36,7 @@ namespace GNetwork
                     }
                 }
             }
+            */
         }
 
 		public void AddHandler(int messageType, MsgHandler handler)

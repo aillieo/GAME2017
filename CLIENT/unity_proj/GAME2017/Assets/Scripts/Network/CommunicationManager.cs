@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using System.Net;
+using UnityEngine;
 using GNetwork;
 
 
@@ -18,6 +19,9 @@ namespace GNetwork{
         SocketClient _socketClient;
 
         private int _index = 0;
+
+		private Byte[] _buffer = null;
+		private int _offset = 0;
 
         public bool IsConnected()
         {
@@ -56,13 +60,14 @@ namespace GNetwork{
             byte[] bMsg = stream.ToArray();
 
             int len = 4 + 4 + bMsg.Length;
-            byte[] bLen = BitConverter.GetBytes(len);
-			System.Array.Reverse (bLen);
+			int rLen = IPAddress.HostToNetworkOrder (len);
+			byte[] bLen = BitConverter.GetBytes(rLen);
  
-            byte[] bIndex = BitConverter.GetBytes(_index);
-            System.Array.Reverse(bIndex);
-            byte[] bType = BitConverter.GetBytes(type);
-			System.Array.Reverse (bType);
+			int rIndex = IPAddress.HostToNetworkOrder (_index);
+			byte[] bIndex = BitConverter.GetBytes(rIndex);
+
+			int rType = IPAddress.HostToNetworkOrder (type);
+			byte[] bType = BitConverter.GetBytes(rType);
 
             byte[] bSend = new byte[4 + len];
             Array.Copy(bLen, 0, bSend, 0, 4);
@@ -75,20 +80,7 @@ namespace GNetwork{
 
             return true;
         }
-
-		public void Receive(byte[] data, int len)
-		{
-			int index = BitConverter.ToInt32(data, 0);
-			index = IPAddress.NetworkToHostOrder(index);
-           
-            int type = BitConverter.ToInt32(data, 4);
-			type = IPAddress.NetworkToHostOrder (type);
-
-			System.IO.MemoryStream stream = new System.IO.MemoryStream(data, 8, len - 8);
-
-            ParseMessage(index, type, stream);
-		}
-
+			
 
         public void Disconnect()
         {
@@ -98,8 +90,52 @@ namespace GNetwork{
         }
 
 
+		public void Check(float deltaTime)
+		{
+
+			if(!_isConnected)
+			{
+				return;
+			}
+				
+			lock (_socketClient)
+			{
+				_socketClient.GetBuffer (ref _buffer, ref _offset);
+				int readLen = 0;
+				while(_offset - readLen > 4)
+				{
+					int len = BitConverter.ToInt32(_buffer, 0);
+					len = IPAddress.NetworkToHostOrder(len);
+
+					if(_offset >= 4 + len)
+					{
+						int index = BitConverter.ToInt32(_buffer, 4);
+						index = IPAddress.NetworkToHostOrder(index);
+
+						int type = BitConverter.ToInt32(_buffer, 8);
+						type = IPAddress.NetworkToHostOrder (type);
+
+						System.IO.MemoryStream stream = new System.IO.MemoryStream(_buffer, 12, len - 8);
+						ParseMessage(index, type, stream);
+
+						readLen += (4 + len);
+					}
+
+					if(readLen > 0)
+					{
+						Array.Copy (_buffer, readLen, _buffer, 0, _offset - readLen);
+						_offset -= readLen;
+					}
+
+				}
+			}
+		}
+
 		private void ParseMessage(int index, int type, System.IO.MemoryStream stream)
 		{
+
+			Debug.Log ("ParseMessage index = " + index.ToString() + "type = " + type.ToString());
+
 			switch (type) 
             {
 			case MessageTypes.S2C_Login:

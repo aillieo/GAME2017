@@ -140,7 +140,6 @@ namespace GAME2017
 			msg.password = _password.text;
 			msg.type = type;
 			CommunicationManager.Instance.SendMessage(MessageTypes.C2S_Login, msg);
-
 			UIManager.Instance.ShowWaiting ();
 
 		}

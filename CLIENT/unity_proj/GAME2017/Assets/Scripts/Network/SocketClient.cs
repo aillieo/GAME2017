@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Sockets;
 using System.Net;
+using System;
 using System.Threading;
+using UnityEngine;
 
 namespace GNetwork{
 
@@ -11,6 +13,9 @@ namespace GNetwork{
 		public SocketClient(){}
 
 		private Socket _socket;
+
+		private byte[] _buffer = new byte[GConfig.Constant.buffer_max_length];
+		private int _offset = 0;
 
 		public bool ConnectServer(string ip, int port)
 		{
@@ -38,34 +43,20 @@ namespace GNetwork{
 
 		void ReceiveMsg()
 		{
-			byte[] lenBytes = new byte[4];
-			byte[] recvBytes = new byte[GConfig.Constant.buffer_max_length];
-			int bytes;
+			int bytes = 0;
+			int len = 0;
+			byte[] recvBuffer = new byte[GConfig.Constant.buffer_max_length];
 			while (true)
 			{
-				int len = 0;
-				bytes = _socket.Receive(lenBytes, 4, 0);
+				bytes = _socket.Receive(recvBuffer);
 				if(bytes > 0)
 				{
-					System.Array.Reverse (lenBytes);
-					len = System.BitConverter.ToInt32(lenBytes, 0);
-
+					lock (this)
+					{
+						Array.Copy (recvBuffer,0,_buffer,_offset,bytes);
+						_offset += bytes;
+					}
 				}
-				if (bytes < 0)
-				{
-					break;
-				}
-
-
-                if (len > 0 && len <= GConfig.Constant.buffer_max_length)
-                {
-                    bytes = _socket.Receive(recvBytes, len, 0);
-                    CommunicationManager.Instance.Receive(recvBytes, len);
-                }
-                else
-                {
-                    break;
-                }
 			}
 
 			_socket.Close();
@@ -77,6 +68,13 @@ namespace GNetwork{
 		public void Send(byte[] data)
 		{
 			_socket.Send(data);
+		}
+
+
+		public void GetBuffer(ref byte[] buffer, ref int offset)
+		{
+			buffer = _buffer;
+			offset = _offset;
 		}
 
 	}
