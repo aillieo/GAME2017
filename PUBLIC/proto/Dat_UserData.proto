@@ -1,5 +1,3 @@
-import "Dat_General.proto";
-
 package ProtoBuf;  
 
 message DAT_UserData
@@ -13,14 +11,11 @@ message DAT_UserData
 	required int32 strength = 6; // 力量属性
 	required int32 magic = 7; // 魔法属性
 	required int32 agility = 8; // 敏捷度
-	required DAT_ElementProperty elementProperty = 9; // 玩家元素属性
 
-	repeated string heroes = 10; // 玩家拥有的所有英雄
+	repeated string heroes = 9; // 玩家拥有的所有英雄
 
-	repeated string teams = 11; // 玩家的队伍
+	repeated string teams = 10; // 玩家的队伍
 
-	required int32 gold = 12; // 玩家有的金币
-	required int32 gem = 13; // 玩家有的钻石
-
-	required DAT_ElementProperty keys = 14; // 玩家的钥匙
+	required int32 gold = 11; // 玩家有的金币
+	required int32 gem = 12; // 玩家有的钻石
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ProtoBuf;
 
 namespace GAME2017
 {
@@ -37,7 +38,7 @@ namespace GAME2017
 
 		public void LoadData()
 		{
-			UserData ud = UserDataManager.Instance.GetUserData();
+            DAT_UserData ud = UserDataManager.Instance.GetUserData();
 			if (ud.heroes.Count > 0) {
 
 				foreach (string heroUid in ud.heroes) {

@@ -1,23 +1,27 @@
-import "Dat_General.proto";
-
 package ProtoBuf;  
+
+message DAT_HeroDataStatic
+{
+	required string heroId = 1; // 英雄id 对应资源
+	required int32 atk = 2;  // 攻击
+	required int32 def = 3;  // 防御
+	required int32 speed = 4;  // 速度
+	required int32 hp = 5; // 生命值
+	repeated string skill = 15; // 英雄的技能列表
+}
+
 
 message DAT_HeroData
 {
 	required string uid = 1; // 唯一id 用于数据库记录
-	required string id = 2; // 英雄id 用于客户端识别英雄资源
+	required string heroId = 2; // 英雄id 用于资源识别
 	required int32 lv = 3;  // 等级
 	required int32 experience = 4;  // 经验
-	required int32 elementType = 5;  // 元素类别 1=air 2=water 3=fire 4=earth
-	required int32 physicalAttack = 6; // 物理攻击
-	required int32 physicalDefence = 7; // 物理防御
-	required int32 magicalAttack = 8; // 魔法攻击
-	required int32 magicalDefence = 9; // 魔法防御
-	required int32 absoluteAttack = 10; // 绝对攻击 
-	required float speed = 11; // 行动速度
-	required int32 move = 12; // 移动格子数
-	required int32 attackRange = 13; //攻击范围
-	required int32 hp = 14; // 生命值
-	repeated string skills = 15; // 英雄的技能列表
+	required int32 atk = 5;  // 攻击
+	required int32 def = 6;  // 防御
+	required int32 speed = 7;  // 速度
+	required int32 hp = 8; // 生命值
+	repeated string skill = 15; // 英雄的技能列表
 
 }
+

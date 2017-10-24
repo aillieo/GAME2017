@@ -66,25 +66,29 @@ namespace fake_server
 			case MessageTypes.C2S_Login:
 				{
 					ProtoBuf.C2S_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.C2S_Login> (stream);
-					HandleMessage (index, msg);
+                    var resp = FakeMegGenerators.GenMsg(msg);
+                    SendMessage(index, MessageTypes.S2C_Login, resp);
 					break;
 				}
 			case MessageTypes.C2S_UserInit:
 				{
 					ProtoBuf.C2S_UserInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.C2S_UserInit> (stream);
-                    HandleMessage(index, msg);
+                    var resp = FakeMegGenerators.GenMsg(msg);
+                    SendMessage(index, MessageTypes.S2C_UserInit, resp);
 					break;
 				}
 			case MessageTypes.C2S_RoleInit:
 				{
 					ProtoBuf.C2S_RoleInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.C2S_RoleInit> (stream);
-                    HandleMessage(index, msg);
+                    var resp = FakeMegGenerators.GenMsg(msg);
+                    SendMessage(index, MessageTypes.S2C_RoleInit, resp);
 					break;
 				}
 			case MessageTypes.C2S_NewHero:
 				{
 					ProtoBuf.C2S_NewHero msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.C2S_NewHero> (stream);
-                    HandleMessage(index, msg);
+                    var resp = FakeMegGenerators.GenMsg(msg);
+                    SendMessage(index, MessageTypes.S2C_NewHero, resp);
 					break;
 				}
 			}
@@ -92,37 +96,5 @@ namespace fake_server
 		}
 
 
-		private void HandleMessage(int index, ProtoBuf.C2S_Login req)
-		{
-			Console.WriteLine (req.ToString());
-			ProtoBuf.S2C_Login resp = new ProtoBuf.S2C_Login();
-			resp.ret = 0;
-			resp.uid = "1000";
-			resp.code = "1000";
-			SendMessage(index, MessageTypes.S2C_Login, resp);
-		}
-
-        private void HandleMessage(int index, ProtoBuf.C2S_UserInit req)
-		{
-			Console.WriteLine (req.ToString());
-			ProtoBuf.S2C_UserInit resp = new ProtoBuf.S2C_UserInit();
-			resp.ret = 0;
-			ProtoBuf.DAT_UserData userData = new ProtoBuf.DAT_UserData ();
-			userData.nickname = "PAPAPA";
-
-            resp.userData = userData;
-
-            SendMessage(index, MessageTypes.S2C_UserInit, resp);
-		}
-
-        private void HandleMessage(int index, ProtoBuf.C2S_RoleInit req)
-		{
-			Console.WriteLine (req.ToString());
-		}
-
-        private void HandleMessage(int index, ProtoBuf.C2S_NewHero req)
-		{
-			Console.WriteLine (req.ToString());
-		}
 	}
 }

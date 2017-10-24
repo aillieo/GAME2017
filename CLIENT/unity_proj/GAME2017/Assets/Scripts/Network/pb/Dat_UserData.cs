@@ -8,7 +8,6 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Dat_UserData.proto
-// Note: requires additional types generated from: Dat_General.proto
 namespace ProtoBuf
 {
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DAT_UserData")]
@@ -72,47 +71,33 @@ namespace ProtoBuf
       get { return _agility; }
       set { _agility = value; }
     }
-    private ProtoBuf.DAT_ElementProperty _elementProperty;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"elementProperty", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public ProtoBuf.DAT_ElementProperty elementProperty
-    {
-      get { return _elementProperty; }
-      set { _elementProperty = value; }
-    }
     private readonly global::System.Collections.Generic.List<string> _heroes = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(10, Name=@"heroes", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(9, Name=@"heroes", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> heroes
     {
       get { return _heroes; }
     }
   
     private readonly global::System.Collections.Generic.List<string> _teams = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(11, Name=@"teams", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(10, Name=@"teams", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<string> teams
     {
       get { return _teams; }
     }
   
     private int _gold;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int gold
     {
       get { return _gold; }
       set { _gold = value; }
     }
     private int _gem;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"gem", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"gem", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int gem
     {
       get { return _gem; }
       set { _gem = value; }
-    }
-    private ProtoBuf.DAT_ElementProperty _keys;
-    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"keys", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public ProtoBuf.DAT_ElementProperty keys
-    {
-      get { return _keys; }
-      set { _keys = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

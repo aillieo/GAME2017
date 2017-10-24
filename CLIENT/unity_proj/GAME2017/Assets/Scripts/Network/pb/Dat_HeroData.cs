@@ -8,9 +8,60 @@
 //------------------------------------------------------------------------------
 
 // Generated from: Dat_HeroData.proto
-// Note: requires additional types generated from: Dat_General.proto
 namespace ProtoBuf
 {
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DAT_HeroDataStatic")]
+  public partial class DAT_HeroDataStatic : global::ProtoBuf.IExtensible
+  {
+    public DAT_HeroDataStatic() {}
+    
+    private string _heroId;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"heroId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string heroId
+    {
+      get { return _heroId; }
+      set { _heroId = value; }
+    }
+    private int _atk;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"atk", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int atk
+    {
+      get { return _atk; }
+      set { _atk = value; }
+    }
+    private int _def;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"def", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int def
+    {
+      get { return _def; }
+      set { _def = value; }
+    }
+    private int _speed;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = true, Name=@"speed", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int speed
+    {
+      get { return _speed; }
+      set { _speed = value; }
+    }
+    private int _hp;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int hp
+    {
+      get { return _hp; }
+      set { _hp = value; }
+    }
+    private readonly global::System.Collections.Generic.List<string> _skill = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(15, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> skill
+    {
+      get { return _skill; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DAT_HeroData")]
   public partial class DAT_HeroData : global::ProtoBuf.IExtensible
   {
@@ -23,12 +74,12 @@ namespace ProtoBuf
       get { return _uid; }
       set { _uid = value; }
     }
-    private string _id;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"id", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string id
+    private string _heroId;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"heroId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string heroId
     {
-      get { return _id; }
-      set { _id = value; }
+      get { return _heroId; }
+      set { _heroId = value; }
     }
     private int _lv;
     [global::ProtoBuf.ProtoMember(3, IsRequired = true, Name=@"lv", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -44,81 +95,39 @@ namespace ProtoBuf
       get { return _experience; }
       set { _experience = value; }
     }
-    private int _elementType;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"elementType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int elementType
+    private int _atk;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = true, Name=@"atk", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int atk
     {
-      get { return _elementType; }
-      set { _elementType = value; }
+      get { return _atk; }
+      set { _atk = value; }
     }
-    private int _physicalAttack;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"physicalAttack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int physicalAttack
+    private int _def;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = true, Name=@"def", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int def
     {
-      get { return _physicalAttack; }
-      set { _physicalAttack = value; }
+      get { return _def; }
+      set { _def = value; }
     }
-    private int _physicalDefence;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"physicalDefence", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int physicalDefence
-    {
-      get { return _physicalDefence; }
-      set { _physicalDefence = value; }
-    }
-    private int _magicalAttack;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"magicalAttack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int magicalAttack
-    {
-      get { return _magicalAttack; }
-      set { _magicalAttack = value; }
-    }
-    private int _magicalDefence;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = true, Name=@"magicalDefence", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int magicalDefence
-    {
-      get { return _magicalDefence; }
-      set { _magicalDefence = value; }
-    }
-    private int _absoluteAttack;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = true, Name=@"absoluteAttack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int absoluteAttack
-    {
-      get { return _absoluteAttack; }
-      set { _absoluteAttack = value; }
-    }
-    private float _speed;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = true, Name=@"speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    public float speed
+    private int _speed;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = true, Name=@"speed", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public int speed
     {
       get { return _speed; }
       set { _speed = value; }
     }
-    private int _move;
-    [global::ProtoBuf.ProtoMember(12, IsRequired = true, Name=@"move", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int move
-    {
-      get { return _move; }
-      set { _move = value; }
-    }
-    private int _attackRange;
-    [global::ProtoBuf.ProtoMember(13, IsRequired = true, Name=@"attackRange", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int attackRange
-    {
-      get { return _attackRange; }
-      set { _attackRange = value; }
-    }
     private int _hp;
-    [global::ProtoBuf.ProtoMember(14, IsRequired = true, Name=@"hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(8, IsRequired = true, Name=@"hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     public int hp
     {
       get { return _hp; }
       set { _hp = value; }
     }
-    private readonly global::System.Collections.Generic.List<string> _skills = new global::System.Collections.Generic.List<string>();
-    [global::ProtoBuf.ProtoMember(15, Name=@"skills", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<string> skills
+    private readonly global::System.Collections.Generic.List<string> _skill = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(15, Name=@"skill", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> skill
     {
-      get { return _skills; }
+      get { return _skill; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

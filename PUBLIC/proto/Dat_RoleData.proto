@@ -1,0 +1,9 @@
+package ProtoBuf;  
+
+message DAT_RoleDataStatic
+{
+	required string roleId = 1; //角色id 资源识别用
+	required int32 strength = 2; // 力量
+	repeated int32 magic = 3; // 魔法
+	required int32 agility = 4; // 敏捷
+}

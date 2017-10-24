@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,8 +33,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web.Extensions" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeMegGenerators.cs" />
+    <Compile Include="JsonLoader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Config.cs" />
@@ -302,14 +305,18 @@
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ServiceModel\XmlProtoSerializer.cs">
       <Link>protobuf-net\ServiceModel\XmlProtoSerializer.cs</Link>
     </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\MessageTypes.cs">
+      <Link>MessageTypes.cs</Link>
+    </Compile>
+    <Compile Include="CommunicationManager.cs" />
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_BattleData.cs">
       <Link>pb\Dat_BattleData.cs</Link>
     </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_General.cs">
-      <Link>pb\Dat_General.cs</Link>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_CityData.cs">
+      <Link>pb\Dat_CityData.cs</Link>
     </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_HeroData.cs">
-      <Link>pb\Dat_HeroData.cs</Link>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_RoleData.cs">
+      <Link>pb\Dat_RoleData.cs</Link>
     </Compile>
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_UserData.cs">
       <Link>pb\Dat_UserData.cs</Link>
@@ -317,26 +324,14 @@
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_BattleInit.cs">
       <Link>pb\Msg_BattleInit.cs</Link>
     </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetHeroData.cs">
-      <Link>pb\Msg_GetHeroData.cs</Link>
-    </Compile>
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetTeamData.cs">
       <Link>pb\Msg_GetTeamData.cs</Link>
     </Compile>
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_Login.cs">
       <Link>pb\Msg_Login.cs</Link>
     </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_MatchOpponent.cs">
-      <Link>pb\Msg_MatchOpponent.cs</Link>
-    </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_NewHero.cs">
-      <Link>pb\Msg_NewHero.cs</Link>
-    </Compile>
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_RoleInit.cs">
       <Link>pb\Msg_RoleInit.cs</Link>
-    </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateHeroData.cs">
-      <Link>pb\Msg_UpdateHeroData.cs</Link>
     </Compile>
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateTeamData.cs">
       <Link>pb\Msg_UpdateTeamData.cs</Link>
@@ -344,16 +339,21 @@
     <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UserInit.cs">
       <Link>pb\Msg_UserInit.cs</Link>
     </Compile>
-    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\MessageTypes.cs">
-      <Link>MessageTypes.cs</Link>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_HeroData.cs">
+      <Link>pb\Dat_HeroData.cs</Link>
     </Compile>
-    <Compile Include="CommunicationManager.cs" />
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetHeroData.cs">
+      <Link>pb\Msg_GetHeroData.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_NewHero.cs">
+      <Link>pb\Msg_NewHero.cs</Link>
+    </Compile>
+    <Compile Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateHeroData.cs">
+      <Link>pb\Msg_UpdateHeroData.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="protobuf-net\" />
-    <Folder Include="pb\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\BclHelpers.cs.meta">
       <Link>protobuf-net\BclHelpers.cs.meta</Link>
@@ -661,47 +661,15 @@
     <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\Web\TODO.txt.meta">
       <Link>protobuf-net\Web\TODO.txt.meta</Link>
     </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_BattleData.cs.meta">
-      <Link>pb\Dat_BattleData.cs.meta</Link>
+    <None Include="..\..\PUBLIC\json\hero.json">
+      <Link>json\hero.json</Link>
     </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_General.cs.meta">
-      <Link>pb\Dat_General.cs.meta</Link>
+    <None Include="..\..\PUBLIC\json\role.json">
+      <Link>json\role.json</Link>
     </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_HeroData.cs.meta">
-      <Link>pb\Dat_HeroData.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Dat_UserData.cs.meta">
-      <Link>pb\Dat_UserData.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_BattleInit.cs.meta">
-      <Link>pb\Msg_BattleInit.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetHeroData.cs.meta">
-      <Link>pb\Msg_GetHeroData.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_GetTeamData.cs.meta">
-      <Link>pb\Msg_GetTeamData.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_Login.cs.meta">
-      <Link>pb\Msg_Login.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_MatchOpponent.cs.meta">
-      <Link>pb\Msg_MatchOpponent.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_NewHero.cs.meta">
-      <Link>pb\Msg_NewHero.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_RoleInit.cs.meta">
-      <Link>pb\Msg_RoleInit.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateHeroData.cs.meta">
-      <Link>pb\Msg_UpdateHeroData.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UpdateTeamData.cs.meta">
-      <Link>pb\Msg_UpdateTeamData.cs.meta</Link>
-    </None>
-    <None Include="..\..\CLIENT\unity_proj\GAME2017\Assets\Scripts\Network\pb\Msg_UserInit.cs.meta">
-      <Link>pb\Msg_UserInit.cs.meta</Link>
-    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="json\" />
+    <Folder Include="pb\" />
   </ItemGroup>
 </Project>

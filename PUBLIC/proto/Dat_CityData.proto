@@ -1,0 +1,15 @@
+package ProtoBuf;  
+
+message DAT_CityDataStatic
+{
+	required string cityId = 1; // 客户端资源识别
+	required string name = 2; // 展示的名字
+	required int32 posx = 3; // 地图坐标x
+	required int32 posy = 4; // 地图坐标y
+}
+
+message DAT_CityData
+{
+	required string uid = 1; // 唯一id 用于数据库记录
+	required DAT_CityDataStatic dataStatic = 2; // 静态数据
+}

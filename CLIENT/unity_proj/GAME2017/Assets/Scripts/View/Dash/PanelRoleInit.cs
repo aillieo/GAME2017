@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.IO;
 using System;
 using GNetwork;
+using ProtoBuf;
 
 namespace GAME2017
 {
@@ -45,16 +46,15 @@ namespace GAME2017
 				//Debug.Log ("ROLE ID " + _roleDataList.roleDataList[index - 1].RoleId);
 
 				ProtoBuf.C2S_RoleInit msg = new ProtoBuf.C2S_RoleInit ();
-				msg.roleID = _roleDataList.roleDataList[index - 1].RoleId;
+				msg.roleID = _roleDataList.roleDataList[index - 1].roleId;
 				GNetwork.CommunicationManager.Instance.SendMessage (MessageTypes.C2S_RoleInit , msg);
 				UIManager.Instance.ShowWaiting ();
 			}
 		}
 
 
-		[Serializable]
 		public class RoleDataList {
-			public RoleDataStatic[] roleDataList; 
+            public DAT_RoleDataStatic[] roleDataList; 
 		}
 
 

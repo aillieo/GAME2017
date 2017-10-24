@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using GNetwork;
+using ProtoBuf;
 
 namespace GAME2017
 {
@@ -98,10 +99,7 @@ namespace GAME2017
 			}
 
 			foreach (ProtoBuf.DAT_HeroData phd in _msg.heroes) {
-				
-				HeroData hd = new HeroData();
-				hd.SetData (phd);
-				UserDataManager.Instance.SetHeroData (hd);
+                UserDataManager.Instance.SetHeroData(phd);
 			}
 
 
@@ -119,9 +117,7 @@ namespace GAME2017
 			}
 
 			ProtoBuf.DAT_HeroData phd = _msg.hero;
-			HeroData hd = new HeroData();
-			hd.SetData (phd);
-			UserDataManager.Instance.AddNewHero (hd);
+            UserDataManager.Instance.AddNewHero(phd);
 
 		}
 

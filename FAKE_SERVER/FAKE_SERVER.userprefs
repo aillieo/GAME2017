@@ -1,10 +1,9 @@
-﻿<Properties StartupItem="server/server.csproj">
+﻿<Properties StartupItem="server\server.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="../CLIENT/unity_proj/GAME2017/Assets/Scripts/3rdParty/protobuf-net/ProtoReader.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="server\FakeMegGenerators.cs">
     <Files>
-      <File FileName="server/Program.cs" Line="1" Column="1" />
-      <File FileName="server/Config.cs" Line="15" Column="1" />
-      <File FileName="../CLIENT/unity_proj/GAME2017/Assets/Scripts/3rdParty/protobuf-net/ProtoReader.cs" Line="541" Column="2" />
+      <File FileName="..\CLIENT\unity_proj\GAME2017\Assets\Scripts\3rdParty\protobuf-net\ProtoReader.cs" Line="524" Column="10" />
+      <File FileName="server\FakeMegGenerators.cs" Line="15" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

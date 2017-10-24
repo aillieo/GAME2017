@@ -16,13 +16,6 @@ namespace ProtoBuf
   {
     public C2S_NewHero() {}
     
-    private int _keyType;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"keyType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    public int keyType
-    {
-      get { return _keyType; }
-      set { _keyType = value; }
-    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

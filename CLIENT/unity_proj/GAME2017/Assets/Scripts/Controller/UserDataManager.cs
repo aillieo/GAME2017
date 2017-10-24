@@ -1,20 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using GAME2017;
+using ProtoBuf;
 
 namespace GAME2017
 {
 	public class UserDataManager : Singleton<UserDataManager> {
 
-		UserData _userData = new UserData ();
-		Dictionary<string,HeroData> _heroes = new Dictionary<string,HeroData>();
+        DAT_UserData _userData = new DAT_UserData();
+        Dictionary<string, DAT_HeroData> _heroes = new Dictionary<string, DAT_HeroData>();
+        private string _uid;
+        private string _code;
 
-		public UserData GetUserData()
+        public DAT_UserData GetUserData()
 		{
 			return _userData;
 		}
 
-		public HeroData GetHeroData(string heroUid)
+        public DAT_HeroData GetHeroData(string heroUid)
 		{
 			if (_heroes.ContainsKey (heroUid)) {
 				return _heroes [heroUid];
@@ -23,33 +26,32 @@ namespace GAME2017
 			return null;
 		}
 
-		public void Init(string _uid, string _code)
+		public void Init(string uid, string code)
 		{
-			_userData.uid = _uid;
-			_userData.code = _code;
+			_uid = uid;
+			_code = code;
 		}
 
 		public void RequestUserData()
 		{
 			ProtoBuf.C2S_UserInit msg = new ProtoBuf.C2S_UserInit ();
-			msg.uid = _userData.uid;
-			msg.code = _userData.code;
+			msg.uid = _uid;
+			msg.code = _code;
 			GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_UserInit,msg);
 		}
 
 		public void UpdateUserData(ProtoBuf.DAT_UserData userData)
 		{
-			_userData.SetData(userData);
-
+			_userData = userData;
 		}
 			
-		public void AddNewHero(HeroData hd)
+		public void AddNewHero(DAT_HeroData hd)
 		{
 			_userData.heroes.Add (hd.uid);
 			_heroes [hd.uid] = hd;
 		}
 
-		public void SetHeroData(HeroData hd)
+        public void SetHeroData(DAT_HeroData hd)
 		{
 			if(_heroes.ContainsKey(hd.uid))
 			{

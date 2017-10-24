@@ -4,7 +4,7 @@ package ProtoBuf;
 
 message C2S_NewHero
 {
-	required int32 keyType = 1;
+
 }
 message S2C_NewHero
 {

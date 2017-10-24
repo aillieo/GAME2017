@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ProtoBuf;
 
 namespace GAME2017
 {
@@ -50,7 +51,7 @@ namespace GAME2017
 		void LoadData()
 		{
 
-			UserData ud = UserDataManager.Instance.GetUserData ();
+			DAT_UserData ud = UserDataManager.Instance.GetUserData ();
 
 			_textNickname.text = ud.nickname;
 			_textLv.text = "lv " + ud.lv.ToString ();
@@ -58,11 +59,7 @@ namespace GAME2017
 			_textRoleStrength.text = "力量 " + ud.strength.ToString ();
 			_textRoleAgility.text = "敏捷 " + ud.agility.ToString ();
 			_textRoleMagic.text = "魔法 "+ ud.magic.ToString ();
-			_textRoleEPAir.text = "气 " +ud.eleProperty.air.ToString ();
-			_textRoleEPWater.text = "水 " + ud.eleProperty.water.ToString ();
-			_textRoleEPFire.text = "火 " +ud.eleProperty.fire.ToString ();
-			_textRoleEPEarth.text = "土 " + ud.eleProperty.earth.ToString ();
-            _roleImage.texture = SpriteTextureManager.Instance.GetRoleImageByID(ud.roleId);
+	        _roleImage.texture = SpriteTextureManager.Instance.GetRoleImageByID(ud.roleId);
 
 		}
 	}

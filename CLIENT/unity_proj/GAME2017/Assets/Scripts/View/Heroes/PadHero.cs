@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ProtoBuf;
 
 namespace GAME2017
 {
 	public class PadHero : MonoBehaviour {
 
 
-		HeroData _heroData;
+		DAT_HeroData _heroData;
 
 		public Text _heroName;
 		public Text _heroLv;
@@ -31,10 +32,10 @@ namespace GAME2017
 			
 		}
 
-		public void SetHeroData (HeroData hd)
+        public void SetHeroData(DAT_HeroData hd)
 		{
 			_heroData = hd;
-			_heroName.text = hd.id;
+			_heroName.text = hd.heroId;
 
 		}
 

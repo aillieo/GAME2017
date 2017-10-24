@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using ProtoBuf;
 
 namespace GAME2017
 {
@@ -28,13 +29,12 @@ namespace GAME2017
 
 		public void LoadUserData (){
 
-			UserData userData = UserDataManager.Instance.GetUserData ();
+			DAT_UserData userData = UserDataManager.Instance.GetUserData ();
 			_textNickname.text = userData.nickname;
 			_textLv.text = "lv "+userData.lv.ToString();
 			_textGold.text = "金币 "+userData.gold.ToString();
 			_textGem.text = "钻石 "+userData.gem.ToString();
 			_textHeroTotal.text = "英雄 "+userData.heroes.Count.ToString();
-			_textKey.text = "钥匙 "+(userData.keys.air +userData.keys.water + userData.keys.fire + userData.keys.earth).ToString ();
             _roleAvatar.texture = SpriteTextureManager.Instance.GetRoleAvatarByID(userData.roleId);
 
 		}
