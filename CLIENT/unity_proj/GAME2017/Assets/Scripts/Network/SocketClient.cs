@@ -57,23 +57,19 @@ namespace GNetwork{
 				}
 
 
-				if (len > 0)
-				{
-					bytes = _socket.Receive(recvBytes, len , 0);
-					CommunicationManager.Instance.Receive(recvBytes, len);
-
-				}
-				if (bytes < 0)
-				{
-					break;
-				}
-
-
-
+                if (len > 0 && len <= GConfig.Constant.buffer_max_length)
+                {
+                    bytes = _socket.Receive(recvBytes, len, 0);
+                    CommunicationManager.Instance.Receive(recvBytes, len);
+                }
+                else
+                {
+                    break;
+                }
 			}
 
 			_socket.Close();
-			CommunicationManager.Instance.IsConnected ();
+			CommunicationManager.Instance.Disconnect ();
 
 		}
 

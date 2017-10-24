@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using GNetwork;
 
+
 namespace GNetwork{
 
 	public class CommunicationManager: Singleton<CommunicationManager>
@@ -13,13 +14,18 @@ namespace GNetwork{
 
         bool _isConnected = false;
 
-        
+        SocketClient _socketClient;
+
+        Byte[] _bufferIndex = new Byte[4];
+        Byte[] _bufferType = new Byte[4];
+        Byte[] _bufferMsg = new Byte[GConfig.Constant.buffer_max_length];
+
+        private int _index = 0;
+
         public bool IsConnected()
         {
             return _isConnected;
         }
-
-		SocketClient _socketClient;
 
 		public bool Init()
 		{
@@ -32,11 +38,14 @@ namespace GNetwork{
 		{
 			_serverIP = ip;
 			_serverPort = port;
-			_socketClient = new SocketClient();
-			_isConnected = _socketClient.ConnectServer(_serverIP, _serverPort);
-			return _isConnected;
+
+            return Init();
 		}
 
+        public int GetMsgIndex()
+        {
+            return _index;
+        }
 
         public bool SendMessage(int type, ProtoBuf.IExtensible msg)
         {
@@ -52,8 +61,8 @@ namespace GNetwork{
             int len = 4 + 4 + bMsg.Length;
             byte[] bLen = BitConverter.GetBytes(len);
 			System.Array.Reverse (bLen);
-            int index = MessageDispatcher.Instance.GetMsgIndex();
-            byte[] bIndex = BitConverter.GetBytes(index);
+ 
+            byte[] bIndex = BitConverter.GetBytes(_index);
             System.Array.Reverse(bIndex);
             byte[] bType = BitConverter.GetBytes(type);
 			System.Array.Reverse (bType);
@@ -65,35 +74,46 @@ namespace GNetwork{
             Array.Copy(bMsg, 0, bSend, 12, len - 8);
             _socketClient.Send(bSend);
 
+            ++_index;
+
             return true;
         }
 
 		public void Receive(byte[] data, int len)
 		{
             int index = 0;
-            byte[] bIndex = new byte[4];
-            Array.Copy(data, 0, bIndex, 0, 4);
-            System.Array.Reverse(bIndex);
-            index = BitConverter.ToInt32(bIndex, 0);
+            Array.Copy(data, 0, _bufferIndex, 0, 4);
+            System.Array.Reverse(_bufferIndex);
+            index = BitConverter.ToInt32(_bufferIndex, 0);
+            
             int type = 0;
-			byte[] bType = new byte[4];
-			Array.Copy(data,4,bType,0,4);
-			System.Array.Reverse (bType);
-			type = BitConverter.ToInt32(bType, 0);
-            byte[] bRecv = new byte[len - 8];
-            Array.Copy(data,8,bRecv,0,len - 8);
-            System.IO.MemoryStream stream = new System.IO.MemoryStream(bRecv);
-            ParseMessage(index,type,stream);
+			Array.Copy(data,4,_bufferType,0,4);
+            System.Array.Reverse(_bufferType);
+            type = BitConverter.ToInt32(_bufferType, 0);
+
+            Array.Copy(data, 8, _bufferMsg, 0, len - 8);
+            System.IO.MemoryStream stream = new System.IO.MemoryStream(_bufferMsg);
+            ParseMessage(index, type, stream);
 
 		}
 
+
+        public void Disconnect()
+        {
+            _socketClient = null;
+            _isConnected = false;
+            GAME2017.UIManager.Instance.ShowAlert("网络连接已断开");
+        }
+
+
 		private void ParseMessage(int index, int type, System.IO.MemoryStream stream)
 		{
-			switch (type) {
+			switch (type) 
+            {
 			case MessageTypes.S2C_Login:
 				{
 					ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login> (stream);
-					MessageDispatcher.Instance.AddMessage (index, type, msg);
+                    MessageDispatcher.Instance.AddMessage (index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_UserInit:
@@ -118,14 +138,6 @@ namespace GNetwork{
 
 
 		}
-
-		public void Disconnect()
-		{
-			_socketClient = null;
-			_isConnected = false;
-			GAME2017.UIManager.Instance.ShowAlert ("网络连接已断开");
-		}
-
 
 
 	}

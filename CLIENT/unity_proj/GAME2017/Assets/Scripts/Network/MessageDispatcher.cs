@@ -11,8 +11,6 @@ namespace GNetwork
 		private Dictionary<int, MsgHandler> _handlerDic = new Dictionary<int, MsgHandler>();
         private Queue<KeyValuePair<int, ProtoBuf.IExtensible>> _msgQueue = new Queue<KeyValuePair<int, ProtoBuf.IExtensible>>();
 
-        private int _index = 0;
-
 		// Use this for initialization
 		void Start () {
 
@@ -35,11 +33,6 @@ namespace GNetwork
                     }
                 }
             }
-        }
-
-        public int GetMsgIndex()
-        {
-            return _index;
         }
 
 		public void AddHandler(int messageType, MsgHandler handler)

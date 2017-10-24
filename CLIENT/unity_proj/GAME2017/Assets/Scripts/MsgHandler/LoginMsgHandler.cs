@@ -6,7 +6,7 @@ namespace GAME2017
 {
     class LoginMsgHandler
 	{
-        public static void HandleMsg(ProtoBuf.S2C_Login resp)
+        public static void HandleMsg(int index, int type, ProtoBuf.S2C_Login resp)
         {
 
         }
