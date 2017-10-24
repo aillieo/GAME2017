@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Net;
 using GNetwork;
 
 
@@ -15,10 +16,6 @@ namespace GNetwork{
         bool _isConnected = false;
 
         SocketClient _socketClient;
-
-        Byte[] _bufferIndex = new Byte[4];
-        Byte[] _bufferType = new Byte[4];
-        Byte[] _bufferMsg = new Byte[GConfig.Constant.buffer_max_length];
 
         private int _index = 0;
 
@@ -81,20 +78,15 @@ namespace GNetwork{
 
 		public void Receive(byte[] data, int len)
 		{
-            int index = 0;
-            Array.Copy(data, 0, _bufferIndex, 0, 4);
-            System.Array.Reverse(_bufferIndex);
-            index = BitConverter.ToInt32(_bufferIndex, 0);
-            
-            int type = 0;
-			Array.Copy(data,4,_bufferType,0,4);
-            System.Array.Reverse(_bufferType);
-            type = BitConverter.ToInt32(_bufferType, 0);
+			int index = BitConverter.ToInt32(data, 0);
+			index = IPAddress.NetworkToHostOrder(index);
+           
+            int type = BitConverter.ToInt32(data, 4);
+			type = IPAddress.NetworkToHostOrder (type);
 
-            Array.Copy(data, 8, _bufferMsg, 0, len - 8);
-            System.IO.MemoryStream stream = new System.IO.MemoryStream(_bufferMsg);
+			System.IO.MemoryStream stream = new System.IO.MemoryStream(data, 8, len - 8);
+
             ParseMessage(index, type, stream);
-
 		}
 
 
