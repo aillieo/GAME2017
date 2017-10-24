@@ -62,7 +62,7 @@ namespace GAME2017
 			_textRoleEPWater.text = "水 " + ud.eleProperty.water.ToString ();
 			_textRoleEPFire.text = "火 " +ud.eleProperty.fire.ToString ();
 			_textRoleEPEarth.text = "土 " + ud.eleProperty.earth.ToString ();
-			_roleImage.texture = SpriteResourceManager.Instance.GetRoleImageByID (ud.roleId);
+            _roleImage.texture = SpriteTextureManager.Instance.GetRoleImageByID(ud.roleId);
 
 		}
 	}

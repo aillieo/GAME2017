@@ -5,8 +5,8 @@ using GAME2017;
 
 namespace GAME2017
 {
-	public class SpriteResourceManager : Singleton<SpriteResourceManager> {
-
+    public class SpriteTextureManager : Singleton<SpriteTextureManager>
+    {
 
 		public void LoadResources()
 		{

@@ -9,7 +9,9 @@ namespace GNetwork
 		public delegate void MsgHandler(object data);
 
 		private Dictionary<int, MsgHandler> _handlerDic = new Dictionary<int, MsgHandler>();
-		private Queue<KeyValuePair<int, object>> _msgQueue = new Queue<KeyValuePair<int, object>>();
+        private Queue<KeyValuePair<int, ProtoBuf.IExtensible>> _msgQueue = new Queue<KeyValuePair<int, ProtoBuf.IExtensible>>();
+
+        private int _index = 0;
 
 		// Use this for initialization
 		void Start () {
@@ -17,22 +19,28 @@ namespace GNetwork
 		}
 
 		// Update is called once per frame
-		void Update () {
+        void Update()
+        {
+            lock (_msgQueue)
+            {
+                if (_msgQueue.Count > 0)
+                {
+                    while (_msgQueue.Count > 0)
+                    {
+                        KeyValuePair<int, ProtoBuf.IExtensible> msgStruct = _msgQueue.Dequeue();
+                        if (_handlerDic.ContainsKey(msgStruct.Key))
+                        {
+                            _handlerDic[msgStruct.Key](msgStruct.Value);
+                        }
+                    }
+                }
+            }
+        }
 
-			if (_msgQueue.Count > 0)
-			{
-				while (_msgQueue.Count > 0)
-				{
-					KeyValuePair<int, object> msgStruct = _msgQueue.Dequeue();
-					if (_handlerDic.ContainsKey(msgStruct.Key))
-					{
-						_handlerDic[msgStruct.Key](msgStruct.Value);
-					}
-				}
-			}
-
-		}
-
+        public int GetMsgIndex()
+        {
+            return _index;
+        }
 
 		public void AddHandler(int messageType, MsgHandler handler)
 		{
@@ -46,10 +54,13 @@ namespace GNetwork
 			}
 		}
 
-		public void AddMessage(int messageType, object msg)
-		{
-			_msgQueue.Enqueue (new KeyValuePair<int,object>(messageType,msg));
-		}
+        public void AddMessage(int index, int messageType, ProtoBuf.IExtensible msg)
+        {
+            lock (_msgQueue)
+            {
+                _msgQueue.Enqueue(new KeyValuePair<int, ProtoBuf.IExtensible>(messageType, msg));
+            }
+        }
 	}
 
 }

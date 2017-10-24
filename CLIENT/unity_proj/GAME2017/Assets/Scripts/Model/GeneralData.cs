@@ -62,8 +62,8 @@ namespace GAME2017
 			strength = dat.strength;
 			magic = dat.magic;
 			agility = dat.agility;
-			eleProperty.SetData(dat.elementProperty);
-			keys.SetData(dat.keys);
+			//eleProperty.SetData(dat.elementProperty);
+			//keys.SetData(dat.keys);
 			heroes = dat.heroes;
 		}
 	}

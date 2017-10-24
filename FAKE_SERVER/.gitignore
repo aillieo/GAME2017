@@ -3,6 +3,6 @@ server/bin/*
 
 server/obj/*
 
-
+*.suo
 
 
