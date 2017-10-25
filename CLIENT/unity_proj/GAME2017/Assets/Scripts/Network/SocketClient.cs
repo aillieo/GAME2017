@@ -44,19 +44,23 @@ namespace GNetwork{
 		void ReceiveMsg()
 		{
 			int bytes = 0;
-			int len = 0;
 			byte[] recvBuffer = new byte[GConfig.Constant.buffer_max_length];
 			while (true)
 			{
 				bytes = _socket.Receive(recvBuffer);
-				if(bytes > 0)
-				{
-					lock (this)
-					{
-						Array.Copy (recvBuffer,0,_buffer,_offset,bytes);
-						_offset += bytes;
-					}
-				}
+                if (bytes > 0)
+                {
+                    lock (this)
+                    {
+                        Debug.Log("SOCKET CLIENT: _offset = " + _offset.ToString() + "  bytes =  " + bytes.ToString());
+                        Array.Copy(recvBuffer, 0, _buffer, _offset, bytes);
+                        _offset += bytes;
+                    }
+                }
+                else
+                {
+                    break;
+                }
 			}
 
 			_socket.Close();
@@ -71,11 +75,18 @@ namespace GNetwork{
 		}
 
 
-		public void GetBuffer(ref byte[] buffer, ref int offset)
+        public void GetBuffer(out byte[] buffer, out int offset)
 		{
 			buffer = _buffer;
 			offset = _offset;
 		}
+
+
+        public void CleanBufferBytes(int bytes)
+        {
+            Array.Copy(_buffer, bytes, _buffer, 0, _offset - bytes);
+            _offset -= bytes;
+        }
 
 	}
 

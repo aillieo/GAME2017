@@ -51,8 +51,8 @@ namespace GAME2017
 			_debugNode.SetActive (false);
 			#endif
 
-
-			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,HandleMessage);
+            
+			//MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,HandleMessage);
 
 			// temporary solution and this Init will be a very time-consuming operation
 			LanguageManager.Instance.Init ();
@@ -65,6 +65,15 @@ namespace GAME2017
 
         }
 
+        void OnEnable()
+        {
+            Messenger.AddListener<S2C_Login>("S2C_Login", HandleMessage);
+        }
+
+        void OnDisable()
+        {
+            Messenger.RemoveListener<S2C_Login>("S2C_Login", HandleMessage);
+        }
 
         public void OnSignInClick()
         {

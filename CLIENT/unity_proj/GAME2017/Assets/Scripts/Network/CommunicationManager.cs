@@ -4,6 +4,7 @@ using System;
 using System.Net;
 using UnityEngine;
 using GNetwork;
+using GAME2017;
 
 
 namespace GNetwork{
@@ -100,13 +101,14 @@ namespace GNetwork{
 				
 			lock (_socketClient)
 			{
-				_socketClient.GetBuffer (ref _buffer, ref _offset);
+                _socketClient.GetBuffer(out _buffer, out _offset);
 				int readLen = 0;
 				while(_offset - readLen > 4)
 				{
 					int len = BitConverter.ToInt32(_buffer, 0);
 					len = IPAddress.NetworkToHostOrder(len);
 
+                    Debug.Log("_offset = " + _offset.ToString() +  "  readLen =  " + readLen.ToString() + "  len = " + len.ToString());
 					if(_offset >= 4 + len)
 					{
 						int index = BitConverter.ToInt32(_buffer, 4);
@@ -120,14 +122,16 @@ namespace GNetwork{
 
 						readLen += (4 + len);
 					}
-
-					if(readLen > 0)
-					{
-						Array.Copy (_buffer, readLen, _buffer, 0, _offset - readLen);
-						_offset -= readLen;
-					}
-
+                    else
+                    {
+                        break;
+                    }
 				}
+
+                if (readLen > 0)
+                {
+                    _socketClient.CleanBufferBytes(readLen);
+                }
 			}
 		}
 
@@ -141,25 +145,25 @@ namespace GNetwork{
 			case MessageTypes.S2C_Login:
 				{
 					ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login> (stream);
-                    MessageDispatcher.Instance.AddMessage (index, type, msg);
+                    MsgLoginHandler.HandleMsg(index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_UserInit:
 				{
 					ProtoBuf.S2C_UserInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_UserInit> (stream);
-                    MessageDispatcher.Instance.AddMessage(index, type, msg);
+                    //MessageDispatcher.Instance.AddMessage(index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_RoleInit:
 				{
 					ProtoBuf.S2C_RoleInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_RoleInit> (stream);
-                    MessageDispatcher.Instance.AddMessage(index, type, msg);
+                    //MessageDispatcher.Instance.AddMessage(index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_NewHero:
 				{
 					ProtoBuf.S2C_NewHero msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_NewHero> (stream);
-                    MessageDispatcher.Instance.AddMessage(index, type, msg);
+                    //MessageDispatcher.Instance.AddMessage(index, type, msg);
 					break;
 				}
 			}
