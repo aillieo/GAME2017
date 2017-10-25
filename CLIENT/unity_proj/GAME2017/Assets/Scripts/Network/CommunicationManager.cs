@@ -108,7 +108,6 @@ namespace GNetwork{
 					int len = BitConverter.ToInt32(_buffer, 0);
 					len = IPAddress.NetworkToHostOrder(len);
 
-                    Debug.Log("_offset = " + _offset.ToString() +  "  readLen =  " + readLen.ToString() + "  len = " + len.ToString());
 					if(_offset >= 4 + len)
 					{
 						int index = BitConverter.ToInt32(_buffer, 4);

@@ -21,7 +21,6 @@ namespace GAME2017
 			_panelDashBase.SetActive (false);
 			_panelRoleInit.SetActive (false);
 
-            Debug.Log("SceneDash.Start");
 			UserDataManager.Instance.RequestUserData ();
 
 			UIManager.Instance.ShowWaiting ();
@@ -126,12 +125,10 @@ namespace GAME2017
         void Awake()
         {
             Messenger.Cleanup();
-        
         }
 
         void OnEnable()
         {
-            Debug.Log("SceneDash.OnEnable");
             Messenger.AddListener<S2C_RoleInit>("S2C_RoleInit", OnRoleInitBack);
             Messenger.AddListener<S2C_UserInit>("S2C_UserInit", OnUserInitBack);
             Messenger.AddListener<S2C_GetHeroData>("S2C_GetHeroData", OnGetHeroDataBack);
@@ -140,7 +137,6 @@ namespace GAME2017
 
         void OnDisable()
         {
-            Debug.Log("SceneDash.OnDisable");
             Messenger.RemoveListener<S2C_RoleInit>("S2C_RoleInit", OnRoleInitBack);
             Messenger.RemoveListener<S2C_UserInit>("S2C_UserInit", OnUserInitBack);
             Messenger.RemoveListener<S2C_GetHeroData>("S2C_GetHeroData", OnGetHeroDataBack);

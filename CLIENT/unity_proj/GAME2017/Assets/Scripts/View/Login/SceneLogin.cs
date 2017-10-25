@@ -63,6 +63,11 @@ namespace GAME2017
 
         }
 
+        void Awake()
+        {
+            Messenger.Cleanup();
+        }
+
         void OnEnable()
         {
             Messenger.AddListener<S2C_Login>("S2C_Login", HandleMessage);

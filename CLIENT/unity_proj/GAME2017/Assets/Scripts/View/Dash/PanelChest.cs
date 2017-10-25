@@ -23,7 +23,7 @@ namespace GAME2017
 
 		void LoadData()
 		{
-			DAT_UserData ud = UserDataManager.Instance.GetUserData ();
+			// DAT_UserData ud = UserDataManager.Instance.GetUserData ();
             // gold  or  gems
 		}
 
@@ -31,7 +31,7 @@ namespace GAME2017
 		{
 			int index = 0;
 			bool hasEnoughKey = false;
-            DAT_UserData ud = UserDataManager.Instance.GetUserData();
+            //DAT_UserData ud = UserDataManager.Instance.GetUserData();
 
 
 			if (index > 0) {
