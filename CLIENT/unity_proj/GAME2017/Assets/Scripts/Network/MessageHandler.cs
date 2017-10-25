@@ -9,13 +9,14 @@ namespace GNetwork
     public class MessageHandler : SingletonMonoBehaviour<MessageHandler>
     {
 
-		public delegate void MsgHandler(object data);
+		public delegate void MsgHandler(ProtoBuf.IExtensible msg);
 
 		private Dictionary<int, MsgHandler> _handlerDic = new Dictionary<int, MsgHandler>();
 
 		// Use this for initialization
 		void Start () {
 
+            //DontDestroyOnLoad(gameObject);
 		}
 
 		// Update is called once per frame
@@ -24,17 +25,28 @@ namespace GNetwork
 			CommunicationManager.Instance.Check (Time.deltaTime);
         }
 
-		public void AddHandler(int messageType, MsgHandler handler)
+		public void AddHandlerForNextRequest(MsgHandler handler)
 		{
-			if (_handlerDic.ContainsKey(messageType))
+            int index = CommunicationManager.Instance.GetMsgIndex();
+
+            if (_handlerDic.ContainsKey(index))
 			{
-				_handlerDic[messageType] += handler;
+                _handlerDic[index] += handler;
 			}
 			else
 			{
-				_handlerDic.Add(messageType, handler);
+                _handlerDic.Add(index, handler);
 			}
 		}
+
+        void CheckHandlerByIndex(int index, ProtoBuf.IExtensible msg)
+        {
+            if (_handlerDic.ContainsKey(index))
+            {
+                _handlerDic[index](msg);
+                _handlerDic.Remove(index);
+            }
+        }
 
         //////////////////////////////////////////////////////////////////////////
 
