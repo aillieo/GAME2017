@@ -52,7 +52,6 @@ namespace GNetwork{
                 {
                     lock (this)
                     {
-                        Debug.Log("SOCKET CLIENT: _offset = " + _offset.ToString() + "  bytes =  " + bytes.ToString());
                         Array.Copy(recvBuffer, 0, _buffer, _offset, bytes);
                         _offset += bytes;
                     }

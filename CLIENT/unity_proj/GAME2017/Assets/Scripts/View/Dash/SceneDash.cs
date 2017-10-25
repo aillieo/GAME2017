@@ -21,8 +21,7 @@ namespace GAME2017
 			_panelDashBase.SetActive (false);
 			_panelRoleInit.SetActive (false);
 
-			InitHandlers ();
-
+            Debug.Log("SceneDash.Start");
 			UserDataManager.Instance.RequestUserData ();
 
 			UIManager.Instance.ShowWaiting ();
@@ -32,34 +31,31 @@ namespace GAME2017
 
 
 
-		void OnUserInitBack(object msg)
+        void OnUserInitBack(S2C_UserInit msg)
 		{
 			UIManager.Instance.HideWaiting ();
 
-			ProtoBuf.S2C_UserInit _msg = (ProtoBuf.S2C_UserInit)msg;
-
-			if (_msg.ret != 0) 
+            if (msg.ret != 0) 
 			{
-				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));
+                UIManager.Instance.ShowAlert(LanguageManager.Instance.GetErrorMessage(msg.ret));
 				return;
 			}
 
-			bool isNewUser = _msg.newUser;
+            bool isNewUser = msg.newUser;
 			if (isNewUser) 
 			{
 				UIManager.Instance.OpenPanel (_panelRoleInit);
-				GNetwork.MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_RoleInit, OnRoleInitBack);
 			} 
 			else 
 			{
-				UserDataManager.Instance.UpdateUserData(_msg.userData);
+				UserDataManager.Instance.UpdateUserData(msg.userData);
 				DestroyObject (_panelRoleInit.gameObject);
 				_panelDashBase.SetActive (true);
 				_panelDashBase.GetComponent<PanelDashBase> ().LoadUserData ();
 
 				// request heroes data
 				ProtoBuf.C2S_GetHeroData chd = new ProtoBuf.C2S_GetHeroData();
-				List<string> _heroes = _msg.userData.heroes;
+                List<string> _heroes = msg.userData.heroes;
 				chd.heroes.AddRange(_heroes);
 				GNetwork.CommunicationManager.Instance.SendMessage (GNetwork.MessageTypes.C2S_GetHeroData,chd);
 
@@ -68,55 +64,53 @@ namespace GAME2017
 		}
 
 
-		void OnRoleInitBack(object msg)
+        void OnRoleInitBack(S2C_RoleInit msg)
 		{
 			
 			UIManager.Instance.HideWaiting ();
-			
-			ProtoBuf.S2C_RoleInit _msg = msg as ProtoBuf.S2C_RoleInit;
-			if (_msg.ret != 0) 
+
+            if (msg.ret != 0) 
 			{
-				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));				
+                UIManager.Instance.ShowAlert(LanguageManager.Instance.GetErrorMessage(msg.ret));				
 			}
 			else 
 			{
 				UIManager.Instance.HideWaiting ();
 				DestroyObject (_panelRoleInit.gameObject);
 				_panelDashBase.SetActive (true);
-				UserDataManager.Instance.UpdateUserData (_msg.userData);
+                UserDataManager.Instance.UpdateUserData(msg.userData);
 				_panelDashBase.GetComponent<PanelDashBase> ().LoadUserData ();
 			}
 		}
 
-		void OnGetHeroDataBack(object msg)
+        void OnGetHeroDataBack(S2C_GetHeroData msg)
 		{
 			UIManager.Instance.HideWaiting ();
-			ProtoBuf.S2C_GetHeroData _msg = msg as ProtoBuf.S2C_GetHeroData;
-			if (_msg.ret != 0) 
+
+            if (msg.ret != 0) 
 			{
-				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));		
+                UIManager.Instance.ShowAlert(LanguageManager.Instance.GetErrorMessage(msg.ret));
 				return;
 			}
 
-			foreach (ProtoBuf.DAT_HeroData phd in _msg.heroes) {
+            foreach (ProtoBuf.DAT_HeroData phd in msg.heroes)
+            {
                 UserDataManager.Instance.SetHeroData(phd);
 			}
-
-
-
 		}
 
-		void OnNewHeroBack(object msg)
+
+        void OnNewHeroBack(S2C_NewHero msg)
 		{
 			UIManager.Instance.HideWaiting ();
-			ProtoBuf.S2C_NewHero _msg = msg as ProtoBuf.S2C_NewHero;
-			if (_msg.ret != 0) 
+
+            if (msg.ret != 0) 
 			{
-				UIManager.Instance.ShowAlert (LanguageManager.Instance.GetErrorMessage(_msg.ret));		
+                UIManager.Instance.ShowAlert(LanguageManager.Instance.GetErrorMessage(msg.ret));		
 				return;
 			}
 
-			ProtoBuf.DAT_HeroData phd = _msg.hero;
+            ProtoBuf.DAT_HeroData phd = msg.hero;
             UserDataManager.Instance.AddNewHero(phd);
 
 		}
@@ -129,19 +123,29 @@ namespace GAME2017
 		}
 
 
+        void Awake()
+        {
+            Messenger.Cleanup();
+        
+        }
 
-		void InitHandlers()
-		{
-			// get user data
-			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_UserInit,OnUserInitBack);
+        void OnEnable()
+        {
+            Debug.Log("SceneDash.OnEnable");
+            Messenger.AddListener<S2C_RoleInit>("S2C_RoleInit", OnRoleInitBack);
+            Messenger.AddListener<S2C_UserInit>("S2C_UserInit", OnUserInitBack);
+            Messenger.AddListener<S2C_GetHeroData>("S2C_GetHeroData", OnGetHeroDataBack);
+            Messenger.AddListener<S2C_NewHero>("S2C_NewHero", OnNewHeroBack);
+        }
 
-			// get hero(es)
-			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_GetHeroData,OnGetHeroDataBack);
-
-			// get new hero
-			MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_NewHero, OnNewHeroBack);
-
-		}
+        void OnDisable()
+        {
+            Debug.Log("SceneDash.OnDisable");
+            Messenger.RemoveListener<S2C_RoleInit>("S2C_RoleInit", OnRoleInitBack);
+            Messenger.RemoveListener<S2C_UserInit>("S2C_UserInit", OnUserInitBack);
+            Messenger.RemoveListener<S2C_GetHeroData>("S2C_GetHeroData", OnGetHeroDataBack);
+            Messenger.RemoveListener<S2C_NewHero>("S2C_NewHero", OnNewHeroBack);
+        }
 
 
 	}

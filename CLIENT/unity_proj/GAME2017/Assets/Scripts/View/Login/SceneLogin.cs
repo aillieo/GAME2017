@@ -52,8 +52,6 @@ namespace GAME2017
 			#endif
 
             
-			//MessageDispatcher.Instance.AddHandler (MessageTypes.S2C_Login,HandleMessage);
-
 			// temporary solution and this Init will be a very time-consuming operation
 			LanguageManager.Instance.Init ();
 

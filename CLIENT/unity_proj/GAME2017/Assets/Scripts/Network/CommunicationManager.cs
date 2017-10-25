@@ -138,32 +138,30 @@ namespace GNetwork{
 		private void ParseMessage(int index, int type, System.IO.MemoryStream stream)
 		{
 
-			Debug.Log ("ParseMessage index = " + index.ToString() + "type = " + type.ToString());
-
 			switch (type) 
             {
 			case MessageTypes.S2C_Login:
 				{
 					ProtoBuf.S2C_Login msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_Login> (stream);
-                    MsgLoginHandler.HandleMsg(index, type, msg);
+                    MessageHandler.HandleMsg(index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_UserInit:
 				{
 					ProtoBuf.S2C_UserInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_UserInit> (stream);
-                    //MessageDispatcher.Instance.AddMessage(index, type, msg);
+                    MessageHandler.HandleMsg(index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_RoleInit:
 				{
 					ProtoBuf.S2C_RoleInit msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_RoleInit> (stream);
-                    //MessageDispatcher.Instance.AddMessage(index, type, msg);
+                    MessageHandler.HandleMsg(index, type, msg);
 					break;
 				}
 			case MessageTypes.S2C_NewHero:
 				{
 					ProtoBuf.S2C_NewHero msg = ProtoBuf.Serializer.Deserialize<ProtoBuf.S2C_NewHero> (stream);
-                    //MessageDispatcher.Instance.AddMessage(index, type, msg);
+                    MessageHandler.HandleMsg(index, type, msg);
 					break;
 				}
 			}
